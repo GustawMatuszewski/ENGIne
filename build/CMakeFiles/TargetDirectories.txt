@@ -1,0 +1,7 @@
+/home/gustaw/Desktop/ENGIne/build/CMakeFiles/ENGIne.dir
+/home/gustaw/Desktop/ENGIne/build/CMakeFiles/edit_cache.dir
+/home/gustaw/Desktop/ENGIne/build/CMakeFiles/rebuild_cache.dir
+/home/gustaw/Desktop/ENGIne/build/CMakeFiles/list_install_components.dir
+/home/gustaw/Desktop/ENGIne/build/CMakeFiles/install.dir
+/home/gustaw/Desktop/ENGIne/build/CMakeFiles/install/local.dir
+/home/gustaw/Desktop/ENGIne/build/CMakeFiles/install/strip.dir
