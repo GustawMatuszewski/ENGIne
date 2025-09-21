@@ -46,7 +46,7 @@ int Window::Initialize(){
     glfwMakeContextCurrent(window);
 
     createCallbacks();
-    glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+   
 
     glewExperimental = GL_TRUE;
 
@@ -85,9 +85,6 @@ GLfloat Window::getYChange(){
 void Window::handleKeys(GLFWwindow* window, int key, int code, int action, int mode){
     Window* theWindow = static_cast<Window*>(glfwGetWindowUserPointer(window));
 
-    if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
-        glfwSetWindowShouldClose(window, GL_TRUE);
-
     if(key >= 0 && key < 1024){
         if(action == GLFW_PRESS){
             theWindow->keys[key] = true;
@@ -112,6 +109,26 @@ void Window::handleMouse(GLFWwindow* window, double xPos, double yPos){
 
     theWindow->lastX = xPos;
     theWindow->lastY = yPos;
+}
+
+void Window::closeWindow(int key){
+    if(getsKeys()[key]){
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+}
+
+bool Window::mouseLockOnWindow(int key){
+    static bool mode = false;
+    if(getsKeys()[key]){
+        mode = !mode;
+        if(mode)
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        else
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+
+        getsKeys()[key] = false;
+    }
+    return mode;
 }
 
 Window::~Window(){

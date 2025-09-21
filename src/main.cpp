@@ -4,9 +4,10 @@
 #include <string.h>
 #include <vector>
 
+#include "imgui.h"
+
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-#include <assimp/Importer.hpp>
 
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -25,6 +26,7 @@
 #include "SpotLight.hpp"
 #include "Material.hpp"
 #include "Model.hpp"
+#include "UI.hpp"
 
 
 const float toRadians = 3.141592265f/180.0f;
@@ -40,18 +42,22 @@ Texture plainTexture;
 Material shinyMaterial;
 Material roughMaterial;
 
-Model test;
-
 DirectionalLight mainLight;
 PointLight pointLights[MAX_POINT_LIGHTS];
 SpotLight spotLights[MAX_SPOT_LIGHTS];
 
 GLfloat deltaTime = .0f;
 GLfloat lastTime = .0f;
+GLfloat fpsTime = .0f;
+GLint frameCount = 0;
+int fps = 0;
+
+std::string homePath = "../Home";
 
 static const char* vShader = "../Shaders/default.vert";
 static const char* fShader = "../Shaders/default.frag";
 
+float mouseSens = .03f;
 
 void CreateObject(){
     unsigned int indices[]={
@@ -92,6 +98,9 @@ void CreateObject(){
     meshList.push_back(TestFloorObj);
 }
 
+std::vector<glm::vec3> modelPositions;
+
+
 void CreateShaders(){
     Shader *shader1 = new Shader();
     shader1->CreateFromFiles(vShader, fShader);
@@ -100,10 +109,14 @@ void CreateShaders(){
 
 int main(){
 
-    mainWindow = Window(1366, 768, "ENGine 0.1");
+    mainWindow = Window(1920, 1080, "ENGIne 0.1.1");
     mainWindow.Initialize();
 
     CreateObject();
+
+    modelPositions.push_back(glm::vec3(0.0f, 2.0f, 0.0f)); //Add with every model
+    modelPositions.push_back(glm::vec3(0.0f, -2.0f, 0.0f));
+
     CreateShaders();
 
     mainCamera = Camera(glm::vec3(.0f,.0f,.0f), glm::vec3(.0f,1.0f,.0f), -90.0f, .0f, 3.0f,5.0f);
@@ -151,16 +164,42 @@ int main(){
 
     glEnable(GL_DEPTH_TEST);
 
+    //IM GUI INIT    
+    UI::Init(mainWindow.getGLFWwindow());
 
     while(!mainWindow.getShouldClose()){
         GLfloat now = glfwGetTime();
         deltaTime = now - lastTime;
         lastTime = now;
 
+        frameCount++;
+        if (now - fpsTime >= 1.0) {
+            fps = frameCount;
+            frameCount = 0;
+            fpsTime = now;
+        }
+
+        //Window Control
+
         glfwPollEvents();
 
-        mainCamera.keyControl(mainWindow.getsKeys(), deltaTime);
-        mainCamera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange(), deltaTime);
+        ImGuiIO& io = ImGui::GetIO();
+
+        if (!io.WantCaptureKeyboard) {
+            mainCamera.keyControl(mainWindow.getsKeys(), deltaTime);
+        }
+
+        bool isMouseLocked = mainWindow.mouseLockOnWindow(GLFW_KEY_ESCAPE);
+
+        if (isMouseLocked && !io.WantCaptureMouse) {
+            mainCamera.mouseControl(mainWindow.getXChange() * mouseSens, mainWindow.getYChange() * mouseSens);
+        } else {
+            mainCamera.mouseControl(0, 0);
+        }
+
+        mainWindow.closeWindow(GLFW_KEY_X);
+        //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=
+
 
         glClearColor(.0f, .0f ,.0f ,1.0f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -182,23 +221,47 @@ int main(){
         glUniform3f(uniformEyePos, mainCamera.getCameraPosition().x, mainCamera.getCameraPosition().y, mainCamera.getCameraPosition().z);
 
         glm::mat4 model(1.0f);
-        model = glm::translate(model, glm::vec3(.0f, .0f, .0f));
+
+        model = glm::translate(model, modelPositions[0]);
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
         plainTexture.UseTexture();
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         meshList[0]->RenderMesh();
 
         model = glm::mat4(1.0f);
-        model = glm::translate(model, glm::vec3(.0f, -4.0f, .0f));
+
+        model = glm::translate(model, modelPositions[1]);
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
         plainTexture.UseTexture();
         roughMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
         meshList[1]->RenderMesh();
 
+        glDisable(GL_DEPTH_TEST);
+
+        ImGui_ImplOpenGL3_NewFrame();
+        ImGui_ImplGlfw_NewFrame();
+        ImGui::NewFrame();
+
+        //Place all the elements  here
+        UI::FpsCounter(fps, 10, 10, 100, 50);
+
+        UI::PositionController(modelPositions, 0, 10, 70, 500, 100);
+        UI::PositionController(modelPositions, 1, 10, 90, 500, 100);
+
+        ImGui::Render();
+        ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+        glEnable(GL_DEPTH_TEST);
+
+        glfwSwapInterval(0); // Disable VSync set 1 to enable
         glUseProgram(0);
 
         mainWindow.SwapBuffers();
     }
+
+    ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplGlfw_Shutdown();
+    ImGui::DestroyContext();
 
     return 0;
 }

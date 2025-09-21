@@ -44,9 +44,9 @@ void Camera::keyControl(bool* keys, GLfloat deltaTime){
     }
 }
 
-void Camera::mouseControl(GLfloat xChange, GLfloat yChange, GLfloat deltaTime){
-    xChange = xChange*turnSpeed*deltaTime;    
-    yChange = yChange*turnSpeed*deltaTime;    
+void Camera::mouseControl(GLfloat xChange, GLfloat yChange){
+    xChange = xChange*turnSpeed;    
+    yChange = yChange*turnSpeed;    
 
     
     yaw += xChange;

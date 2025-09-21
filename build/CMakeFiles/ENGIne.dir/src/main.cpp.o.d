@@ -163,23 +163,16 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/c++/15/bits/stl_uninitialized.h \
  /usr/include/c++/15/bits/stl_vector.h \
  /usr/include/c++/15/bits/stl_bvector.h \
- /usr/include/c++/15/bits/vector.tcc /usr/include/GL/glew.h \
- /usr/include/c++/15/cstdint \
+ /usr/include/c++/15/bits/vector.tcc \
+ /home/gustaw/Desktop/ENGIne/third_party/imgui/imgui.h \
+ /home/gustaw/Desktop/ENGIne/third_party/imgui/imconfig.h \
+ /usr/lib/gcc/x86_64-linux-gnu/15/include/float.h /usr/include/assert.h \
+ /usr/include/GL/glew.h /usr/include/c++/15/cstdint \
  /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h /usr/include/GL/glu.h \
- /usr/include/GL/gl.h /usr/include/GLFW/glfw3.h \
- /usr/local/include/assimp/Importer.hpp /usr/local/include/assimp/types.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/syslimits.h \
- /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
- /usr/include/x86_64-linux-gnu/bits/local_lim.h \
- /usr/include/linux/limits.h \
- /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
- /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h \
- /usr/local/include/assimp/defs.h /usr/local/include/assimp/config.h \
- /usr/local/include/assimp/vector2.h /usr/include/c++/15/cmath \
+ /usr/include/GL/gl.h /usr/include/GLFW/glfw3.h /usr/include/glm/glm.hpp \
+ /usr/include/glm/detail/_fixes.hpp /usr/include/c++/15/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -203,29 +196,16 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/c++/15/tr1/poly_hermite.tcc \
  /usr/include/c++/15/tr1/poly_laguerre.tcc \
  /usr/include/c++/15/tr1/riemann_zeta.tcc \
- /usr/local/include/assimp/vector3.h /usr/local/include/assimp/color4.h \
- /usr/local/include/assimp/matrix3x3.h \
- /usr/local/include/assimp/matrix4x4.h \
- /usr/local/include/assimp/quaternion.h /usr/include/c++/15/cstring \
- /usr/local/include/assimp/vector2.inl \
- /usr/local/include/assimp/vector3.inl \
- /usr/local/include/assimp/color4.inl \
- /usr/local/include/assimp/matrix3x3.inl /usr/include/c++/15/algorithm \
- /usr/include/c++/15/bits/stl_algo.h \
- /usr/include/c++/15/bits/algorithmfwd.h \
- /usr/include/c++/15/bits/stl_heap.h \
- /usr/include/c++/15/bits/uniform_int_dist.h \
- /usr/include/c++/15/bits/stl_tempbuf.h \
- /usr/include/c++/15/pstl/glue_algorithm_defs.h \
- /usr/include/c++/15/pstl/execution_defs.h \
- /usr/local/include/assimp/matrix4x4.inl \
- /usr/local/include/assimp/MathFunctions.h \
- /usr/local/include/assimp/quaternion.inl /usr/include/glm/glm.hpp \
- /usr/include/glm/detail/_fixes.hpp /usr/include/glm/detail/setup.hpp \
- /usr/include/c++/15/cassert /usr/include/assert.h \
+ /usr/include/glm/detail/setup.hpp /usr/include/c++/15/cassert \
  /usr/include/glm/simd/platform.h /usr/include/c++/15/climits \
- /usr/include/c++/15/cfloat \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/float.h \
+ /usr/lib/gcc/x86_64-linux-gnu/15/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/15/include/syslimits.h \
+ /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/local_lim.h \
+ /usr/include/linux/limits.h \
+ /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/15/cfloat \
  /usr/include/glm/fwd.hpp /usr/include/glm/detail/qualifier.hpp \
  /usr/include/glm/detail/setup.hpp /usr/include/glm/vec2.hpp \
  /usr/include/glm/ext/vector_bool2.hpp \
@@ -380,7 +360,7 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/glm/ext/vector_int1.hpp \
  /usr/include/glm/ext/vector_int1_sized.hpp \
  /usr/include/glm/ext/vector_uint1.hpp \
- /usr/include/glm/ext/vector_uint1_sized.hpp \
+ /usr/include/glm/ext/vector_uint1_sized.hpp /usr/include/c++/15/cstring \
  /usr/include/glm/gtc/type_ptr.inl \
  /home/gustaw/Desktop/ENGIne/headers/CommonValues.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Utils.hpp \
@@ -409,6 +389,26 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /home/gustaw/Desktop/ENGIne/headers/SpotLight.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Material.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Model.hpp \
+ /usr/local/include/assimp/Importer.hpp /usr/local/include/assimp/types.h \
+ /usr/local/include/assimp/defs.h /usr/local/include/assimp/config.h \
+ /usr/local/include/assimp/vector2.h /usr/local/include/assimp/vector3.h \
+ /usr/local/include/assimp/color4.h /usr/local/include/assimp/matrix3x3.h \
+ /usr/local/include/assimp/matrix4x4.h \
+ /usr/local/include/assimp/quaternion.h \
+ /usr/local/include/assimp/vector2.inl \
+ /usr/local/include/assimp/vector3.inl \
+ /usr/local/include/assimp/color4.inl \
+ /usr/local/include/assimp/matrix3x3.inl /usr/include/c++/15/algorithm \
+ /usr/include/c++/15/bits/stl_algo.h \
+ /usr/include/c++/15/bits/algorithmfwd.h \
+ /usr/include/c++/15/bits/stl_heap.h \
+ /usr/include/c++/15/bits/uniform_int_dist.h \
+ /usr/include/c++/15/bits/stl_tempbuf.h \
+ /usr/include/c++/15/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/15/pstl/execution_defs.h \
+ /usr/local/include/assimp/matrix4x4.inl \
+ /usr/local/include/assimp/MathFunctions.h \
+ /usr/local/include/assimp/quaternion.inl \
  /usr/local/include/assimp/scene.h /usr/local/include/assimp/texture.h \
  /usr/local/include/assimp/Compiler/pushpack1.h \
  /usr/local/include/assimp/Compiler/poppack1.h \
@@ -426,4 +426,24 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/local/include/assimp/metadata.h \
  /usr/local/include/assimp/postprocess.h \
  /home/gustaw/Desktop/ENGIne/headers/Mesh.hpp \
- /home/gustaw/Desktop/ENGIne/headers/Texture.hpp
+ /home/gustaw/Desktop/ENGIne/headers/Texture.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/UI.hpp \
+ /usr/include/c++/15/filesystem /usr/include/c++/15/bits/fs_fwd.h \
+ /usr/include/c++/15/bits/chrono.h /usr/include/c++/15/ratio \
+ /usr/include/c++/15/ctime /usr/include/c++/15/bits/parse_numbers.h \
+ /usr/include/c++/15/bits/fs_path.h /usr/include/c++/15/locale \
+ /usr/include/c++/15/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/15/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/15/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/15/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/15/bits/locale_conv.h /usr/include/c++/15/iomanip \
+ /usr/include/c++/15/bits/quoted_string.h /usr/include/c++/15/sstream \
+ /usr/include/c++/15/bits/sstream.tcc /usr/include/c++/15/codecvt \
+ /usr/include/c++/15/ext/concurrence.h \
+ /usr/include/c++/15/bits/shared_ptr.h \
+ /usr/include/c++/15/bits/shared_ptr_base.h \
+ /usr/include/c++/15/bits/allocated_ptr.h \
+ /usr/include/c++/15/bits/unique_ptr.h /usr/include/c++/15/bits/fs_dir.h \
+ /usr/include/c++/15/bits/fs_ops.h \
+ /home/gustaw/Desktop/ENGIne/third_party/imgui/backends/imgui_impl_glfw.h \
+ /home/gustaw/Desktop/ENGIne/third_party/imgui/backends/imgui_impl_opengl3.h

@@ -14,6 +14,14 @@ ENGIne: \
   CMakeFiles/ENGIne.dir/src/PointLight.cpp.o \
   CMakeFiles/ENGIne.dir/src/SpotLight.cpp.o \
   CMakeFiles/ENGIne.dir/src/Model.cpp.o \
+  CMakeFiles/ENGIne.dir/src/UI.cpp.o \
+  CMakeFiles/ENGIne.dir/third_party/imgui/imgui.cpp.o \
+  CMakeFiles/ENGIne.dir/third_party/imgui/imgui_demo.cpp.o \
+  CMakeFiles/ENGIne.dir/third_party/imgui/imgui_draw.cpp.o \
+  CMakeFiles/ENGIne.dir/third_party/imgui/imgui_tables.cpp.o \
+  CMakeFiles/ENGIne.dir/third_party/imgui/imgui_widgets.cpp.o \
+  CMakeFiles/ENGIne.dir/third_party/imgui/backends/imgui_impl_glfw.cpp.o \
+  CMakeFiles/ENGIne.dir/third_party/imgui/backends/imgui_impl_opengl3.cpp.o \
   /usr/lib/x86_64-linux-gnu/libglfw.so.3.4 \
   /usr/lib/x86_64-linux-gnu/libGLEW.so \
   /usr/local/lib/libassimp.so.6.0.2 \
@@ -97,6 +105,22 @@ CMakeFiles/ENGIne.dir/src/PointLight.cpp.o:
 CMakeFiles/ENGIne.dir/src/SpotLight.cpp.o:
 
 CMakeFiles/ENGIne.dir/src/Model.cpp.o:
+
+CMakeFiles/ENGIne.dir/src/UI.cpp.o:
+
+CMakeFiles/ENGIne.dir/third_party/imgui/imgui.cpp.o:
+
+CMakeFiles/ENGIne.dir/third_party/imgui/imgui_demo.cpp.o:
+
+CMakeFiles/ENGIne.dir/third_party/imgui/imgui_draw.cpp.o:
+
+CMakeFiles/ENGIne.dir/third_party/imgui/imgui_tables.cpp.o:
+
+CMakeFiles/ENGIne.dir/third_party/imgui/imgui_widgets.cpp.o:
+
+CMakeFiles/ENGIne.dir/third_party/imgui/backends/imgui_impl_glfw.cpp.o:
+
+CMakeFiles/ENGIne.dir/third_party/imgui/backends/imgui_impl_opengl3.cpp.o:
 
 /usr/lib/x86_64-linux-gnu/libglfw.so.3.4:
 

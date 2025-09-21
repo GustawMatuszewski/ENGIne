@@ -10,7 +10,8 @@ class Window{
         Window();
 
         Window(GLint windowWidth, GLint windowHeight, const char* windowTitle);
-
+        GLFWwindow* getGLFWwindow() { return window; }
+        
         int Initialize();
 
         GLfloat getBufferWidth()  { return bufferWidth; }
@@ -23,6 +24,8 @@ class Window{
         GLfloat getXChange();
         GLfloat getYChange();
 
+        void closeWindow(int key);
+        bool mouseLockOnWindow(int key);
 
         void SwapBuffers()      { glfwSwapBuffers(window); }
 
