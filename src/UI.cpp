@@ -11,6 +11,20 @@ namespace UI {
         ImGui_ImplOpenGL3_Init("#version 330");
     }
 
+    
+    void InspectorPanel(ECSManager& ecsManager, int entityID, float posX, float posY, float width, float height) {
+        ImGui::SetNextWindowPos(ImVec2(posX, posY), ImGuiCond_Always);
+        ImGui::SetNextWindowSize(ImVec2(width, height), ImGuiCond_Always);
+
+        std::string windowTitle = "Entity " + std::to_string(entityID) + " Inspector";
+        ImGui::Begin(windowTitle.c_str());
+
+        TransformController(ecsManager, entityID);
+        TextureController(ecsManager, entityID);
+
+        ImGui::End();
+    }
+
     void GetIo(ImGuiIO& io) {
         io = ImGui::GetIO();
     }
@@ -31,20 +45,50 @@ namespace UI {
         ImGui::End();
     }
 
-    void PositionController(std::vector<glm::vec3> &modelPositions, int modelID, float posX, float posY, float width, float height) {
+    void TransformController(ECSManager& ecsManager, int entityID) {
+        if (ecsManager.HasComponent<TransformComponent>(entityID)) {
+            TransformComponent& transform = ecsManager.GetTransformComponent(entityID);
 
-        ImGui::SetNextWindowPos(ImVec2(posX, posY), ImGuiCond_Always);   // Set position
-        ImGui::SetNextWindowSize(ImVec2(width, height), ImGuiCond_Always); //set size
+            if (ImGui::CollapsingHeader("Transform")) {
+                if (ImGui::InputFloat3("Position", &transform.position[0]) ||
+                    ImGui::InputFloat3("Rotation", &transform.rotation[0]) ||
+                    ImGui::InputFloat3("Scale", &transform.scale[0])) 
+                {
+                    transform.SetDirty();
+                }
+            }
+        }
+    }
 
-        ImGui::Begin("Position Controller");
+    void TextureController(ECSManager& ecsManager, int entityID) {
+        if (ecsManager.HasComponent<TextureComponent>(entityID)) {
+            TextureComponent& textureComp = ecsManager.GetTextureComponent(entityID);
 
-        if (modelID >= 0 && modelID < modelPositions.size()) {
-            std::string label = "Model ID: " + std::to_string(modelID) + " Position";
-            ImGui::InputFloat3(label.c_str(), &modelPositions[modelID][0]);
-        } else {
-            ImGui::Text("Invalid Model ID: %d", modelID);
+            if (ImGui::CollapsingHeader("Texture")) {
+                if (textureComp.texture) {
+                    ImGui::Text("Texture Preview:");
+                    GLuint textureID = textureComp.texture->GetTextureID();
+                    ImGui::Image((void*)(intptr_t)textureID, ImVec2(100, 100));
+                } else {
+                    ImGui::Text("No Texture Assigned");
+                }
+            }
+        } else if (ecsManager.HasComponent<ModelComponent>(entityID)) {
+            ModelComponent& modelComp = ecsManager.GetModelComponent(entityID);
+
+            if (ImGui::CollapsingHeader("Texture")) {
+                if (modelComp.model && !modelComp.model->textureIDs.empty()) {
+                    for (size_t i = 0; i < modelComp.model->textureIDs.size(); i++) {
+                        GLuint texID = modelComp.model->textureIDs[i];
+                        ImGui::Text("Texture %zu:", i);
+                        ImGui::Image((void*)(intptr_t)texID, ImVec2(100, 100));
+                    }
+                } else {
+                    ImGui::Text("No Texture Assigned");
+                }
+            }
         }
 
-        ImGui::End();
     }
 }
+

@@ -80,7 +80,7 @@ void Model::LoadMaterials(const aiScene *scene){
                 int idx = std::string(path.data).rfind("/");
                 std::string filename = std::string(path.data).substr(idx + 1); //May lead to not finidng
 
-                std::string texPath = std::string("../Textures/") + filename;
+                std::string texPath = std::string("../Textures/") + filename;//Needs to be expanded
 
                 textureList[i] = new Texture(texPath.c_str());
 
@@ -88,11 +88,13 @@ void Model::LoadMaterials(const aiScene *scene){
                     printf("ERROR: FAILED TO LOAD TEXTURE AT: %s \n ", texPath);
                     delete textureList[i];
                     textureList[i] = nullptr;
+                } else {
+                    textureIDs.push_back(textureList[i]->GetTextureID());
                 }
             }
          }
          if(!textureList[i]){
-            textureList[i] = new Texture("../noTexture.png");
+            textureList[i] = new Texture("../Textures/missingTexture.png");
             textureList[i]->LoadTexture2D();
          }
     }

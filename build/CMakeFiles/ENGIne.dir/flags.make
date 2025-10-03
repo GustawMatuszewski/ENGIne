@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/home/gustaw/Desktop/ENGIne/headers -I/home/gustaw/Desktop/ENGIne/third_party/imgui -I/home/gustaw/Desktop/ENGIne/third_party/imgui/backends
 
-CXX_FLAGS = -std=gnu++17
+CXX_FLAGS = -g -std=gnu++17
 

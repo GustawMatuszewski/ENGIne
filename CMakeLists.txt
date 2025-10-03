@@ -5,6 +5,7 @@ project(ENGIne CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(OpenGL_GL_PREFERENCE GLVND)
+set(CMAKE_BUILD_TYPE Debug)
 
 find_package(glfw3 3.3 REQUIRED)
 find_package(OpenGL REQUIRED)
@@ -14,6 +15,7 @@ find_package(assimp REQUIRED)
 set(IMGUI_DIR ${CMAKE_SOURCE_DIR}/third_party/imgui)
 
 set(IMGUI_SRC
+    ${IMGUI_DIR}/imgui.cpp
     ${IMGUI_DIR}/imgui.cpp
     ${IMGUI_DIR}/imgui_demo.cpp
     ${IMGUI_DIR}/imgui_draw.cpp
@@ -38,6 +40,7 @@ add_executable(
     src/SpotLight.cpp
     src/Model.cpp
     src/UI.cpp
+    src/EcsManager.cpp
     ${IMGUI_SRC}
 )
 

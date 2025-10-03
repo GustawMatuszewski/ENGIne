@@ -12,12 +12,18 @@
 #include "backends/imgui_impl_glfw.h"
 #include "backends/imgui_impl_opengl3.h"
 
+#include "EcsManager.hpp"
+#include "Entity.hpp"
+
 namespace UI {
     void Init(GLFWwindow* window);
 
+    void InspectorPanel(ECSManager& ecsManager, int entityID, float posX, float posY, float width, float height);
+
     void FpsCounter(int fps, float posX, float posY, float width, float height);
     void FileExplorer(std::string& startPath);
-    void PositionController(std::vector<glm::vec3> &modelPositions, int modelID, float posX, float posY, float width, float height);
+    void TransformController(ECSManager& ecsManager, int entityID);
+    void TextureController(ECSManager& ecsManager, int entityID);
 
     void GetIo(ImGuiIO& io);
     void Destroy();

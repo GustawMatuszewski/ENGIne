@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <string>
+#include <thread>
 
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
@@ -18,6 +19,8 @@ class Model{
         void LoadModel(const std::string &fileName);
         void RenderModel();
         void ClearModel();
+
+        std::vector<GLuint> textureIDs;
 
         ~Model();
 

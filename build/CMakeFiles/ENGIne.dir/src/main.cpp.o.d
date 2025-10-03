@@ -1,8 +1,8 @@
 CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /home/gustaw/Desktop/ENGIne/src/main.cpp /usr/include/stdc-predef.h \
- /usr/include/c++/15/iostream /usr/include/c++/15/bits/requires_hosted.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
+ /usr/include/c++/14/iostream /usr/include/c++/14/bits/requires_hosted.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
@@ -10,17 +10,17 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/cpu_defines.h \
- /usr/include/c++/15/pstl/pstl_config.h /usr/include/c++/15/ostream \
- /usr/include/c++/15/bits/ostream.h /usr/include/c++/15/ios \
- /usr/include/c++/15/iosfwd /usr/include/c++/15/bits/stringfwd.h \
- /usr/include/c++/15/bits/memoryfwd.h /usr/include/c++/15/bits/postypes.h \
- /usr/include/c++/15/cwchar /usr/include/wchar.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h \
+ /usr/include/c++/14/pstl/pstl_config.h /usr/include/c++/14/ostream \
+ /usr/include/c++/14/ios /usr/include/c++/14/iosfwd \
+ /usr/include/c++/14/bits/stringfwd.h \
+ /usr/include/c++/14/bits/memoryfwd.h /usr/include/c++/14/bits/postypes.h \
+ /usr/include/c++/14/cwchar /usr/include/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stdarg.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/types/wint_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/mbstate_t.h \
@@ -29,28 +29,28 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /usr/include/c++/15/exception /usr/include/c++/15/bits/exception.h \
- /usr/include/c++/15/bits/version.h \
- /usr/include/c++/15/bits/exception_ptr.h \
- /usr/include/c++/15/bits/exception_defines.h \
- /usr/include/c++/15/bits/cxxabi_init_exception.h \
- /usr/include/c++/15/typeinfo /usr/include/c++/15/bits/hash_bytes.h \
- /usr/include/c++/15/new /usr/include/c++/15/bits/move.h \
- /usr/include/c++/15/type_traits \
- /usr/include/c++/15/bits/nested_exception.h \
- /usr/include/c++/15/bits/char_traits.h \
- /usr/include/c++/15/bits/localefwd.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/c++locale.h \
- /usr/include/c++/15/clocale /usr/include/locale.h \
- /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/15/cctype \
+ /usr/include/c++/14/exception /usr/include/c++/14/bits/exception.h \
+ /usr/include/c++/14/bits/version.h \
+ /usr/include/c++/14/bits/exception_ptr.h \
+ /usr/include/c++/14/bits/exception_defines.h \
+ /usr/include/c++/14/bits/cxxabi_init_exception.h \
+ /usr/include/c++/14/typeinfo /usr/include/c++/14/bits/hash_bytes.h \
+ /usr/include/c++/14/new /usr/include/c++/14/bits/move.h \
+ /usr/include/c++/14/type_traits \
+ /usr/include/c++/14/bits/nested_exception.h \
+ /usr/include/c++/14/bits/char_traits.h \
+ /usr/include/c++/14/bits/localefwd.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/c++locale.h \
+ /usr/include/c++/14/clocale /usr/include/locale.h \
+ /usr/include/x86_64-linux-gnu/bits/locale.h /usr/include/c++/14/cctype \
  /usr/include/ctype.h /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
  /usr/include/x86_64-linux-gnu/bits/time64.h \
  /usr/include/x86_64-linux-gnu/bits/endian.h \
  /usr/include/x86_64-linux-gnu/bits/endianness.h \
- /usr/include/c++/15/bits/ios_base.h /usr/include/c++/15/ext/atomicity.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/gthr.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/gthr-default.h \
+ /usr/include/c++/14/bits/ios_base.h /usr/include/c++/14/ext/atomicity.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/gthr.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/gthr-default.h \
  /usr/include/pthread.h /usr/include/sched.h \
  /usr/include/x86_64-linux-gnu/bits/types/time_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_timespec.h \
@@ -83,41 +83,41 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/types/__sigset_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h \
  /usr/include/x86_64-linux-gnu/bits/pthread_stack_min-dynamic.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/atomic_word.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/atomic_word.h \
  /usr/include/x86_64-linux-gnu/sys/single_threaded.h \
- /usr/include/c++/15/bits/locale_classes.h /usr/include/c++/15/string \
- /usr/include/c++/15/bits/allocator.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/c++allocator.h \
- /usr/include/c++/15/bits/new_allocator.h \
- /usr/include/c++/15/bits/functexcept.h \
- /usr/include/c++/15/bits/cpp_type_traits.h \
- /usr/include/c++/15/bits/ostream_insert.h \
- /usr/include/c++/15/bits/cxxabi_forced.h \
- /usr/include/c++/15/bits/stl_iterator_base_funcs.h \
- /usr/include/c++/15/bits/concept_check.h \
- /usr/include/c++/15/debug/assertions.h \
- /usr/include/c++/15/bits/stl_iterator_base_types.h \
- /usr/include/c++/15/bits/stl_iterator.h \
- /usr/include/c++/15/ext/type_traits.h \
- /usr/include/c++/15/bits/ptr_traits.h \
- /usr/include/c++/15/bits/stl_function.h \
- /usr/include/c++/15/backward/binders.h \
- /usr/include/c++/15/ext/numeric_traits.h \
- /usr/include/c++/15/bits/stl_algobase.h \
- /usr/include/c++/15/bits/stl_pair.h /usr/include/c++/15/bits/utility.h \
- /usr/include/c++/15/debug/debug.h \
- /usr/include/c++/15/bits/predefined_ops.h /usr/include/c++/15/bit \
- /usr/include/c++/15/concepts /usr/include/c++/15/bits/refwrap.h \
- /usr/include/c++/15/bits/invoke.h \
- /usr/include/c++/15/bits/range_access.h \
- /usr/include/c++/15/initializer_list \
- /usr/include/c++/15/bits/basic_string.h \
- /usr/include/c++/15/ext/alloc_traits.h \
- /usr/include/c++/15/bits/alloc_traits.h \
- /usr/include/c++/15/bits/stl_construct.h /usr/include/c++/15/string_view \
- /usr/include/c++/15/bits/functional_hash.h \
- /usr/include/c++/15/bits/string_view.tcc \
- /usr/include/c++/15/ext/string_conversions.h /usr/include/c++/15/cstdlib \
+ /usr/include/c++/14/bits/locale_classes.h /usr/include/c++/14/string \
+ /usr/include/c++/14/bits/allocator.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/c++allocator.h \
+ /usr/include/c++/14/bits/new_allocator.h \
+ /usr/include/c++/14/bits/functexcept.h \
+ /usr/include/c++/14/bits/cpp_type_traits.h \
+ /usr/include/c++/14/bits/ostream_insert.h \
+ /usr/include/c++/14/bits/cxxabi_forced.h \
+ /usr/include/c++/14/bits/stl_iterator_base_funcs.h \
+ /usr/include/c++/14/bits/concept_check.h \
+ /usr/include/c++/14/debug/assertions.h \
+ /usr/include/c++/14/bits/stl_iterator_base_types.h \
+ /usr/include/c++/14/bits/stl_iterator.h \
+ /usr/include/c++/14/ext/type_traits.h \
+ /usr/include/c++/14/bits/ptr_traits.h \
+ /usr/include/c++/14/bits/stl_function.h \
+ /usr/include/c++/14/backward/binders.h \
+ /usr/include/c++/14/ext/numeric_traits.h \
+ /usr/include/c++/14/bits/stl_algobase.h \
+ /usr/include/c++/14/bits/stl_pair.h /usr/include/c++/14/bits/utility.h \
+ /usr/include/c++/14/debug/debug.h \
+ /usr/include/c++/14/bits/predefined_ops.h /usr/include/c++/14/bit \
+ /usr/include/c++/14/concepts /usr/include/c++/14/bits/refwrap.h \
+ /usr/include/c++/14/bits/invoke.h \
+ /usr/include/c++/14/bits/range_access.h \
+ /usr/include/c++/14/initializer_list \
+ /usr/include/c++/14/bits/basic_string.h \
+ /usr/include/c++/14/ext/alloc_traits.h \
+ /usr/include/c++/14/bits/alloc_traits.h \
+ /usr/include/c++/14/bits/stl_construct.h /usr/include/c++/14/string_view \
+ /usr/include/c++/14/bits/functional_hash.h \
+ /usr/include/c++/14/bits/string_view.tcc \
+ /usr/include/c++/14/ext/string_conversions.h /usr/include/c++/14/cstdlib \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
@@ -128,51 +128,58 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/select.h \
  /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h \
  /usr/include/alloca.h /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/c++/15/bits/std_abs.h /usr/include/c++/15/cstdio \
+ /usr/include/c++/14/bits/std_abs.h /usr/include/c++/14/cstdio \
  /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/struct_FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /usr/include/c++/15/cerrno /usr/include/errno.h \
+ /usr/include/c++/14/cerrno /usr/include/errno.h \
  /usr/include/x86_64-linux-gnu/bits/errno.h /usr/include/linux/errno.h \
  /usr/lib/linux/uapi/x86/asm/errno.h /usr/include/asm-generic/errno.h \
  /usr/include/asm-generic/errno-base.h \
  /usr/include/x86_64-linux-gnu/bits/types/error_t.h \
- /usr/include/c++/15/bits/charconv.h \
- /usr/include/c++/15/bits/basic_string.tcc \
- /usr/include/c++/15/bits/memory_resource.h /usr/include/c++/15/cstddef \
- /usr/include/c++/15/bits/uses_allocator.h \
- /usr/include/c++/15/bits/uses_allocator_args.h /usr/include/c++/15/tuple \
- /usr/include/c++/15/bits/locale_classes.tcc \
- /usr/include/c++/15/system_error \
- /usr/include/x86_64-linux-gnu/c++/15/bits/error_constants.h \
- /usr/include/c++/15/stdexcept /usr/include/c++/15/streambuf \
- /usr/include/c++/15/bits/streambuf.tcc \
- /usr/include/c++/15/bits/basic_ios.h \
- /usr/include/c++/15/bits/locale_facets.h /usr/include/c++/15/cwctype \
+ /usr/include/c++/14/bits/charconv.h \
+ /usr/include/c++/14/bits/basic_string.tcc \
+ /usr/include/c++/14/bits/memory_resource.h /usr/include/c++/14/cstddef \
+ /usr/include/c++/14/bits/uses_allocator.h \
+ /usr/include/c++/14/bits/uses_allocator_args.h /usr/include/c++/14/tuple \
+ /usr/include/c++/14/bits/locale_classes.tcc \
+ /usr/include/c++/14/system_error \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/error_constants.h \
+ /usr/include/c++/14/stdexcept /usr/include/c++/14/streambuf \
+ /usr/include/c++/14/bits/streambuf.tcc \
+ /usr/include/c++/14/bits/basic_ios.h \
+ /usr/include/c++/14/bits/locale_facets.h /usr/include/c++/14/cwctype \
  /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/ctype_base.h \
- /usr/include/c++/15/bits/streambuf_iterator.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/ctype_inline.h \
- /usr/include/c++/15/bits/locale_facets.tcc \
- /usr/include/c++/15/bits/basic_ios.tcc \
- /usr/include/c++/15/bits/ostream.tcc /usr/include/c++/15/istream \
- /usr/include/c++/15/bits/istream.tcc /usr/include/string.h \
- /usr/include/strings.h /usr/include/c++/15/vector \
- /usr/include/c++/15/bits/stl_uninitialized.h \
- /usr/include/c++/15/bits/stl_vector.h \
- /usr/include/c++/15/bits/stl_bvector.h \
- /usr/include/c++/15/bits/vector.tcc \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_base.h \
+ /usr/include/c++/14/bits/streambuf_iterator.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/ctype_inline.h \
+ /usr/include/c++/14/bits/locale_facets.tcc \
+ /usr/include/c++/14/bits/basic_ios.tcc \
+ /usr/include/c++/14/bits/ostream.tcc /usr/include/c++/14/istream \
+ /usr/include/c++/14/bits/istream.tcc /usr/include/string.h \
+ /usr/include/strings.h /usr/include/c++/14/vector \
+ /usr/include/c++/14/bits/stl_uninitialized.h \
+ /usr/include/c++/14/bits/stl_vector.h \
+ /usr/include/c++/14/bits/stl_bvector.h \
+ /usr/include/c++/14/bits/vector.tcc /usr/include/c++/14/chrono \
+ /usr/include/c++/14/bits/chrono.h /usr/include/c++/14/ratio \
+ /usr/include/c++/14/cstdint \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
+ /usr/include/x86_64-linux-gnu/bits/stdint-least.h \
+ /usr/include/c++/14/limits /usr/include/c++/14/ctime \
+ /usr/include/c++/14/bits/parse_numbers.h /usr/include/c++/14/thread \
+ /usr/include/c++/14/bits/std_thread.h \
+ /usr/include/c++/14/bits/unique_ptr.h \
+ /usr/include/c++/14/bits/this_thread_sleep.h \
  /home/gustaw/Desktop/ENGIne/third_party/imgui/imgui.h \
  /home/gustaw/Desktop/ENGIne/third_party/imgui/imconfig.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/float.h /usr/include/assert.h \
- /usr/include/GL/glew.h /usr/include/c++/15/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h /usr/include/GL/glu.h \
- /usr/include/GL/gl.h /usr/include/GLFW/glfw3.h /usr/include/glm/glm.hpp \
- /usr/include/glm/detail/_fixes.hpp /usr/include/c++/15/cmath \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/float.h /usr/include/assert.h \
+ /usr/include/GL/glew.h /usr/include/GL/glu.h /usr/include/GL/gl.h \
+ /usr/include/GLFW/glfw3.h /usr/include/glm/glm.hpp \
+ /usr/include/glm/detail/_fixes.hpp /usr/include/c++/14/cmath \
  /usr/include/math.h /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -183,29 +190,28 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/15/bits/specfun.h /usr/include/c++/15/limits \
- /usr/include/c++/15/tr1/gamma.tcc \
- /usr/include/c++/15/tr1/special_function_util.h \
- /usr/include/c++/15/tr1/bessel_function.tcc \
- /usr/include/c++/15/tr1/beta_function.tcc \
- /usr/include/c++/15/tr1/ell_integral.tcc \
- /usr/include/c++/15/tr1/exp_integral.tcc \
- /usr/include/c++/15/tr1/hypergeometric.tcc \
- /usr/include/c++/15/tr1/legendre_function.tcc \
- /usr/include/c++/15/tr1/modified_bessel_func.tcc \
- /usr/include/c++/15/tr1/poly_hermite.tcc \
- /usr/include/c++/15/tr1/poly_laguerre.tcc \
- /usr/include/c++/15/tr1/riemann_zeta.tcc \
- /usr/include/glm/detail/setup.hpp /usr/include/c++/15/cassert \
- /usr/include/glm/simd/platform.h /usr/include/c++/15/climits \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/limits.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/syslimits.h \
+ /usr/include/c++/14/bits/specfun.h /usr/include/c++/14/tr1/gamma.tcc \
+ /usr/include/c++/14/tr1/special_function_util.h \
+ /usr/include/c++/14/tr1/bessel_function.tcc \
+ /usr/include/c++/14/tr1/beta_function.tcc \
+ /usr/include/c++/14/tr1/ell_integral.tcc \
+ /usr/include/c++/14/tr1/exp_integral.tcc \
+ /usr/include/c++/14/tr1/hypergeometric.tcc \
+ /usr/include/c++/14/tr1/legendre_function.tcc \
+ /usr/include/c++/14/tr1/modified_bessel_func.tcc \
+ /usr/include/c++/14/tr1/poly_hermite.tcc \
+ /usr/include/c++/14/tr1/poly_laguerre.tcc \
+ /usr/include/c++/14/tr1/riemann_zeta.tcc \
+ /usr/include/glm/detail/setup.hpp /usr/include/c++/14/cassert \
+ /usr/include/glm/simd/platform.h /usr/include/c++/14/climits \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/limits.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/syslimits.h \
  /usr/include/limits.h /usr/include/x86_64-linux-gnu/bits/posix1_lim.h \
  /usr/include/x86_64-linux-gnu/bits/local_lim.h \
  /usr/include/linux/limits.h \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
- /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/15/cfloat \
+ /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/14/cfloat \
  /usr/include/glm/fwd.hpp /usr/include/glm/detail/qualifier.hpp \
  /usr/include/glm/detail/setup.hpp /usr/include/glm/vec2.hpp \
  /usr/include/glm/ext/vector_bool2.hpp \
@@ -360,16 +366,16 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /usr/include/glm/ext/vector_int1.hpp \
  /usr/include/glm/ext/vector_int1_sized.hpp \
  /usr/include/glm/ext/vector_uint1.hpp \
- /usr/include/glm/ext/vector_uint1_sized.hpp /usr/include/c++/15/cstring \
+ /usr/include/glm/ext/vector_uint1_sized.hpp /usr/include/c++/14/cstring \
  /usr/include/glm/gtc/type_ptr.inl \
  /home/gustaw/Desktop/ENGIne/headers/CommonValues.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Utils.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Mesh.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Shader.hpp \
- /usr/include/c++/15/fstream /usr/include/c++/15/bits/codecvt.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/basic_file.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/c++io.h \
- /usr/include/c++/15/bits/fstream.tcc \
+ /usr/include/c++/14/fstream /usr/include/c++/14/bits/codecvt.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/c++io.h \
+ /usr/include/c++/14/bits/fstream.tcc \
  /home/gustaw/Desktop/ENGIne/headers/CommonValues.hpp \
  /home/gustaw/Desktop/ENGIne/headers/DirectionalLight.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Light.hpp \
@@ -379,71 +385,71 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /home/gustaw/Desktop/ENGIne/headers/Camera.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Texture.hpp \
  /home/gustaw/Desktop/ENGIne/headers/stb_image.h \
- /usr/include/c++/15/stdlib.h /usr/include/c++/15/math.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/emmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/xmmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/mmintrin.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/mm_malloc.h \
+ /usr/include/c++/14/stdlib.h /usr/include/c++/14/math.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/emmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/xmmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/mmintrin.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/mm_malloc.h \
  /home/gustaw/Desktop/ENGIne/headers/DirectionalLight.hpp \
  /home/gustaw/Desktop/ENGIne/headers/PointLight.hpp \
  /home/gustaw/Desktop/ENGIne/headers/SpotLight.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Material.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Model.hpp \
- /usr/local/include/assimp/Importer.hpp /usr/local/include/assimp/types.h \
- /usr/local/include/assimp/defs.h /usr/local/include/assimp/config.h \
- /usr/local/include/assimp/vector2.h /usr/local/include/assimp/vector3.h \
- /usr/local/include/assimp/color4.h /usr/local/include/assimp/matrix3x3.h \
- /usr/local/include/assimp/matrix4x4.h \
- /usr/local/include/assimp/quaternion.h \
- /usr/local/include/assimp/vector2.inl \
- /usr/local/include/assimp/vector3.inl \
- /usr/local/include/assimp/color4.inl \
- /usr/local/include/assimp/matrix3x3.inl /usr/include/c++/15/algorithm \
- /usr/include/c++/15/bits/stl_algo.h \
- /usr/include/c++/15/bits/algorithmfwd.h \
- /usr/include/c++/15/bits/stl_heap.h \
- /usr/include/c++/15/bits/uniform_int_dist.h \
- /usr/include/c++/15/bits/stl_tempbuf.h \
- /usr/include/c++/15/pstl/glue_algorithm_defs.h \
- /usr/include/c++/15/pstl/execution_defs.h \
- /usr/local/include/assimp/matrix4x4.inl \
- /usr/local/include/assimp/MathFunctions.h \
- /usr/local/include/assimp/quaternion.inl \
- /usr/local/include/assimp/scene.h /usr/local/include/assimp/texture.h \
- /usr/local/include/assimp/Compiler/pushpack1.h \
- /usr/local/include/assimp/Compiler/poppack1.h \
- /usr/local/include/assimp/mesh.h /usr/local/include/assimp/aabb.h \
- /usr/include/c++/15/unordered_set \
- /usr/include/c++/15/bits/unordered_set.h \
- /usr/include/c++/15/bits/hashtable.h \
- /usr/include/c++/15/bits/hashtable_policy.h \
- /usr/include/c++/15/ext/aligned_buffer.h \
- /usr/include/c++/15/bits/enable_special_members.h \
- /usr/include/c++/15/bits/node_handle.h \
- /usr/include/c++/15/bits/erase_if.h /usr/local/include/assimp/light.h \
- /usr/local/include/assimp/camera.h /usr/local/include/assimp/material.h \
- /usr/local/include/assimp/material.inl /usr/local/include/assimp/anim.h \
- /usr/local/include/assimp/metadata.h \
- /usr/local/include/assimp/postprocess.h \
+ /usr/include/assimp/Importer.hpp /usr/include/assimp/types.h \
+ /usr/include/assimp/defs.h /usr/include/assimp/config.h \
+ /usr/include/assimp/vector2.h /usr/include/assimp/vector3.h \
+ /usr/include/assimp/color4.h /usr/include/assimp/matrix3x3.h \
+ /usr/include/assimp/matrix4x4.h /usr/include/assimp/quaternion.h \
+ /usr/include/assimp/vector2.inl /usr/include/assimp/vector3.inl \
+ /usr/include/assimp/color4.inl /usr/include/assimp/matrix3x3.inl \
+ /usr/include/c++/14/algorithm /usr/include/c++/14/bits/stl_algo.h \
+ /usr/include/c++/14/bits/algorithmfwd.h \
+ /usr/include/c++/14/bits/stl_heap.h \
+ /usr/include/c++/14/bits/uniform_int_dist.h \
+ /usr/include/c++/14/bits/stl_tempbuf.h \
+ /usr/include/c++/14/pstl/glue_algorithm_defs.h \
+ /usr/include/c++/14/pstl/execution_defs.h \
+ /usr/include/assimp/matrix4x4.inl /usr/include/assimp/MathFunctions.h \
+ /usr/include/assimp/quaternion.inl /usr/include/assimp/scene.h \
+ /usr/include/assimp/texture.h /usr/include/assimp/Compiler/pushpack1.h \
+ /usr/include/assimp/Compiler/poppack1.h /usr/include/assimp/mesh.h \
+ /usr/include/assimp/aabb.h /usr/include/c++/14/unordered_set \
+ /usr/include/c++/14/bits/unordered_set.h \
+ /usr/include/c++/14/bits/hashtable.h \
+ /usr/include/c++/14/bits/hashtable_policy.h \
+ /usr/include/c++/14/ext/aligned_buffer.h \
+ /usr/include/c++/14/bits/enable_special_members.h \
+ /usr/include/c++/14/bits/node_handle.h \
+ /usr/include/c++/14/bits/erase_if.h /usr/include/assimp/light.h \
+ /usr/include/assimp/camera.h /usr/include/assimp/material.h \
+ /usr/include/assimp/material.inl /usr/include/assimp/anim.h \
+ /usr/include/assimp/metadata.h /usr/include/assimp/postprocess.h \
  /home/gustaw/Desktop/ENGIne/headers/Mesh.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Texture.hpp \
  /home/gustaw/Desktop/ENGIne/headers/UI.hpp \
- /usr/include/c++/15/filesystem /usr/include/c++/15/bits/fs_fwd.h \
- /usr/include/c++/15/bits/chrono.h /usr/include/c++/15/ratio \
- /usr/include/c++/15/ctime /usr/include/c++/15/bits/parse_numbers.h \
- /usr/include/c++/15/bits/fs_path.h /usr/include/c++/15/locale \
- /usr/include/c++/15/bits/locale_facets_nonio.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/time_members.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/messages_members.h \
- /usr/include/libintl.h /usr/include/c++/15/bits/locale_facets_nonio.tcc \
- /usr/include/c++/15/bits/locale_conv.h /usr/include/c++/15/iomanip \
- /usr/include/c++/15/bits/quoted_string.h /usr/include/c++/15/sstream \
- /usr/include/c++/15/bits/sstream.tcc /usr/include/c++/15/codecvt \
- /usr/include/c++/15/ext/concurrence.h \
- /usr/include/c++/15/bits/shared_ptr.h \
- /usr/include/c++/15/bits/shared_ptr_base.h \
- /usr/include/c++/15/bits/allocated_ptr.h \
- /usr/include/c++/15/bits/unique_ptr.h /usr/include/c++/15/bits/fs_dir.h \
- /usr/include/c++/15/bits/fs_ops.h \
+ /usr/include/c++/14/filesystem /usr/include/c++/14/bits/fs_fwd.h \
+ /usr/include/c++/14/bits/fs_path.h /usr/include/c++/14/locale \
+ /usr/include/c++/14/bits/locale_facets_nonio.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/time_members.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/messages_members.h \
+ /usr/include/libintl.h /usr/include/c++/14/bits/locale_facets_nonio.tcc \
+ /usr/include/c++/14/bits/locale_conv.h /usr/include/c++/14/iomanip \
+ /usr/include/c++/14/bits/quoted_string.h /usr/include/c++/14/sstream \
+ /usr/include/c++/14/bits/sstream.tcc /usr/include/c++/14/codecvt \
+ /usr/include/c++/14/ext/concurrence.h \
+ /usr/include/c++/14/bits/shared_ptr.h \
+ /usr/include/c++/14/bits/shared_ptr_base.h \
+ /usr/include/c++/14/bits/allocated_ptr.h \
+ /usr/include/c++/14/bits/fs_dir.h /usr/include/c++/14/bits/fs_ops.h \
  /home/gustaw/Desktop/ENGIne/third_party/imgui/backends/imgui_impl_glfw.h \
- /home/gustaw/Desktop/ENGIne/third_party/imgui/backends/imgui_impl_opengl3.h
+ /home/gustaw/Desktop/ENGIne/third_party/imgui/backends/imgui_impl_opengl3.h \
+ /home/gustaw/Desktop/ENGIne/headers/EcsManager.hpp \
+ /usr/include/c++/14/unordered_map \
+ /usr/include/c++/14/bits/unordered_map.h \
+ /home/gustaw/Desktop/ENGIne/headers/Entity.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/Camera.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/Material.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/Model.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/Utils.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/Entity.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/EcsManager.hpp

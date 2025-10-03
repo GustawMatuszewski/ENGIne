@@ -45,11 +45,11 @@ int Window::Initialize(){
     glfwGetFramebufferSize(window, &bufferWidth, &bufferHeight);
     glfwMakeContextCurrent(window);
 
+    glfwSwapBuffers(window);
+
     createCallbacks();
-   
 
     glewExperimental = GL_TRUE;
-
     if (glewInit() != GLEW_OK) {
         printf("ERROR: GLEW FAILED TO INITIALIZE !!! \n");
         glfwDestroyWindow(window);
@@ -57,13 +57,14 @@ int Window::Initialize(){
         return 1;
     }
 
-    glEnable(GL_DEPTH_TEST);
-    glViewport(0, 0, bufferWidth, bufferHeight);
 
-    glfwSetWindowUserPointer(window, this);
+        glEnable(GL_DEPTH_TEST);
+        glViewport(0, 0, bufferWidth, bufferHeight);
 
-    return 0;
-}
+        glfwSetWindowUserPointer(window, this);
+
+        return 0;
+    }
 
 void Window::createCallbacks(){
     glfwSetKeyCallback(window, handleKeys);

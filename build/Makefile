@@ -222,6 +222,78 @@ src/DirectionalLight.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.s
 .PHONY : src/DirectionalLight.cpp.s
 
+src/EcsManager.o: src/EcsManager.cpp.o
+.PHONY : src/EcsManager.o
+
+# target to build an object file
+src/EcsManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/EcsManager.cpp.o
+.PHONY : src/EcsManager.cpp.o
+
+src/EcsManager.i: src/EcsManager.cpp.i
+.PHONY : src/EcsManager.i
+
+# target to preprocess a source file
+src/EcsManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/EcsManager.cpp.i
+.PHONY : src/EcsManager.cpp.i
+
+src/EcsManager.s: src/EcsManager.cpp.s
+.PHONY : src/EcsManager.s
+
+# target to generate assembly for a file
+src/EcsManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/EcsManager.cpp.s
+.PHONY : src/EcsManager.cpp.s
+
+src/Job.o: src/Job.cpp.o
+.PHONY : src/Job.o
+
+# target to build an object file
+src/Job.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/Job.cpp.o
+.PHONY : src/Job.cpp.o
+
+src/Job.i: src/Job.cpp.i
+.PHONY : src/Job.i
+
+# target to preprocess a source file
+src/Job.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/Job.cpp.i
+.PHONY : src/Job.cpp.i
+
+src/Job.s: src/Job.cpp.s
+.PHONY : src/Job.s
+
+# target to generate assembly for a file
+src/Job.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/Job.cpp.s
+.PHONY : src/Job.cpp.s
+
+src/JobQ.o: src/JobQ.cpp.o
+.PHONY : src/JobQ.o
+
+# target to build an object file
+src/JobQ.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/JobQ.cpp.o
+.PHONY : src/JobQ.cpp.o
+
+src/JobQ.i: src/JobQ.cpp.i
+.PHONY : src/JobQ.i
+
+# target to preprocess a source file
+src/JobQ.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/JobQ.cpp.i
+.PHONY : src/JobQ.cpp.i
+
+src/JobQ.s: src/JobQ.cpp.s
+.PHONY : src/JobQ.s
+
+# target to generate assembly for a file
+src/JobQ.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ENGIne.dir/build.make CMakeFiles/ENGIne.dir/src/JobQ.cpp.s
+.PHONY : src/JobQ.cpp.s
+
 src/Light.o: src/Light.cpp.o
 .PHONY : src/Light.o
 
@@ -673,6 +745,15 @@ help:
 	@echo "... src/DirectionalLight.o"
 	@echo "... src/DirectionalLight.i"
 	@echo "... src/DirectionalLight.s"
+	@echo "... src/EcsManager.o"
+	@echo "... src/EcsManager.i"
+	@echo "... src/EcsManager.s"
+	@echo "... src/Job.o"
+	@echo "... src/Job.i"
+	@echo "... src/Job.s"
+	@echo "... src/JobQ.o"
+	@echo "... src/JobQ.i"
+	@echo "... src/JobQ.s"
 	@echo "... src/Light.o"
 	@echo "... src/Light.i"
 	@echo "... src/Light.s"

@@ -70,6 +70,7 @@
         "stack": "cpp",
         "text_encoding": "cpp",
         "__nullptr": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "future": "cpp"
     }
 }

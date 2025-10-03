@@ -10,6 +10,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/gustaw/Desktop/ENGIne/src/Camera.cpp" "CMakeFiles/ENGIne.dir/src/Camera.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Camera.cpp.o.d"
   "/home/gustaw/Desktop/ENGIne/src/DirectionalLight.cpp" "CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.o.d"
+  "/home/gustaw/Desktop/ENGIne/src/EcsManager.cpp" "CMakeFiles/ENGIne.dir/src/EcsManager.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/EcsManager.cpp.o.d"
+  "/home/gustaw/Desktop/ENGIne/src/Job.cpp" "CMakeFiles/ENGIne.dir/src/Job.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Job.cpp.o.d"
+  "/home/gustaw/Desktop/ENGIne/src/JobQ.cpp" "CMakeFiles/ENGIne.dir/src/JobQ.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/JobQ.cpp.o.d"
   "/home/gustaw/Desktop/ENGIne/src/Light.cpp" "CMakeFiles/ENGIne.dir/src/Light.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Light.cpp.o.d"
   "/home/gustaw/Desktop/ENGIne/src/Material.cpp" "CMakeFiles/ENGIne.dir/src/Material.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Material.cpp.o.d"
   "/home/gustaw/Desktop/ENGIne/src/Mesh.cpp" "CMakeFiles/ENGIne.dir/src/Mesh.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Mesh.cpp.o.d"

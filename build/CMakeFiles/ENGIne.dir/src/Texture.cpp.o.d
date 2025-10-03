@@ -1,9 +1,9 @@
 CMakeFiles/ENGIne.dir/src/Texture.cpp.o: \
  /home/gustaw/Desktop/ENGIne/src/Texture.cpp /usr/include/stdc-predef.h \
  /home/gustaw/Desktop/ENGIne/headers/Texture.hpp /usr/include/GL/glew.h \
- /usr/include/c++/15/cstddef \
- /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
+ /usr/include/c++/14/cstddef \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/c++config.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
  /usr/include/x86_64-linux-gnu/bits/timesize.h \
@@ -11,11 +11,11 @@ CMakeFiles/ENGIne.dir/src/Texture.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/long-double.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs.h \
  /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/cpu_defines.h \
- /usr/include/c++/15/pstl/pstl_config.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h \
- /usr/include/c++/15/bits/version.h /usr/include/c++/15/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h /usr/include/stdint.h \
+ /usr/include/x86_64-linux-gnu/c++/14/bits/cpu_defines.h \
+ /usr/include/c++/14/pstl/pstl_config.h \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stddef.h \
+ /usr/include/c++/14/bits/version.h /usr/include/c++/14/cstdint \
+ /usr/lib/gcc/x86_64-linux-gnu/14/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
@@ -25,7 +25,7 @@ CMakeFiles/ENGIne.dir/src/Texture.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-least.h /usr/include/GL/glu.h \
  /usr/include/GL/gl.h /home/gustaw/Desktop/ENGIne/headers/stb_image.h \
- /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/15/include/stdarg.h \
+ /usr/include/stdio.h /usr/lib/gcc/x86_64-linux-gnu/14/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__mbstate_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__fpos64_t.h \
@@ -36,7 +36,7 @@ CMakeFiles/ENGIne.dir/src/Texture.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
- /usr/include/c++/15/stdlib.h /usr/include/c++/15/cstdlib \
+ /usr/include/c++/14/stdlib.h /usr/include/c++/14/cstdlib \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
@@ -63,4 +63,4 @@ CMakeFiles/ENGIne.dir/src/Texture.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/struct_mutex.h \
  /usr/include/x86_64-linux-gnu/bits/struct_rwlock.h /usr/include/alloca.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
- /usr/include/c++/15/bits/std_abs.h
+ /usr/include/c++/14/bits/std_abs.h

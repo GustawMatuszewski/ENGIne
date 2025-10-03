@@ -10,6 +10,8 @@ class Texture{
         Texture();
         Texture(const char* fileLocation);
 
+        GLuint GetTextureID() const { return textureID; }
+
         bool LoadTexture2D();
         bool LoadTexture2D_A();
         

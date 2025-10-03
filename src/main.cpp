@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string.h>
 #include <vector>
+#include <chrono>
+#include <thread>
 
 #include "imgui.h"
 
@@ -28,8 +30,10 @@
 #include "Model.hpp"
 #include "UI.hpp"
 
+#include "Entity.hpp"
+#include "EcsManager.hpp"
 
-const float toRadians = 3.141592265f/180.0f;
+ECSManager ecsManager;
 
 Window mainWindow;
 Camera mainCamera;
@@ -41,6 +45,9 @@ Texture plainTexture;
 
 Material shinyMaterial;
 Material roughMaterial;
+
+Model church;
+Entity testEntity;
 
 DirectionalLight mainLight;
 PointLight pointLights[MAX_POINT_LIGHTS];
@@ -98,9 +105,6 @@ void CreateObject(){
     meshList.push_back(TestFloorObj);
 }
 
-std::vector<glm::vec3> modelPositions;
-
-
 void CreateShaders(){
     Shader *shader1 = new Shader();
     shader1->CreateFromFiles(vShader, fShader);
@@ -112,14 +116,72 @@ int main(){
     mainWindow = Window(1920, 1080, "ENGIne 0.1.1");
     mainWindow.Initialize();
 
+    glfwSwapInterval(0); // Disable VSync set 1 to enable
+
+    const double TARGET_FPS = 144.0; //FPS LIMITER !!!!!!!!!!!!!!
+    const double TARGET_FRAME_TIME = 1.0 / TARGET_FPS;
+
     CreateObject();
-
-    modelPositions.push_back(glm::vec3(0.0f, 2.0f, 0.0f)); //Add with every model
-    modelPositions.push_back(glm::vec3(0.0f, -2.0f, 0.0f));
-
     CreateShaders();
 
-    mainCamera = Camera(glm::vec3(.0f,.0f,.0f), glm::vec3(.0f,1.0f,.0f), -90.0f, .0f, 3.0f,5.0f);
+
+
+    int floorEntity = ecsManager.CreateEntity();
+
+    TransformComponent floorTransform;
+    floorTransform.position = glm::vec3(0.0f, -2.0f, 0.0f);
+    ecsManager.AddTransformComponent(floorEntity, floorTransform);
+
+    MeshComponent floorMesh;
+    floorMesh.mesh = meshList[1]; // Get the floor mesh
+    ecsManager.AddMeshComponent(floorEntity, floorMesh);
+
+    TextureComponent floorTexture;
+    floorTexture.texture = &plainTexture;
+    ecsManager.AddTextureComponent(floorEntity, floorTexture);
+
+    MaterialComponent floorMaterial;
+    floorMaterial.material = &shinyMaterial;
+    ecsManager.AddMaterialComponent(floorEntity, floorMaterial);
+    
+
+
+    int pyramidEntity = ecsManager.CreateEntity();
+
+    TransformComponent pyramidTransform;
+    pyramidTransform.position = glm::vec3(0.0f, 2.0f, 0.0f);
+    ecsManager.AddTransformComponent(pyramidEntity, pyramidTransform);
+
+    MeshComponent pyramidMesh;
+    pyramidMesh.mesh = meshList[0]; // Get the pyramid mesh
+    ecsManager.AddMeshComponent(pyramidEntity, pyramidMesh);
+
+    TextureComponent pyramidTexture;
+    pyramidTexture.texture = &noTexture;
+    ecsManager.AddTextureComponent(pyramidEntity, pyramidTexture);
+
+    MaterialComponent pyramidMaterial;
+    pyramidMaterial.material = &shinyMaterial;
+    ecsManager.AddMaterialComponent(pyramidEntity, pyramidMaterial);
+
+    // Create an entity for the church
+    
+    int churchEntity = ecsManager.CreateEntity();
+    TransformComponent churchTransform;
+    churchTransform.position = glm::vec3(2.0f, 0.0f, 0.0f);
+    churchTransform.rotation.x = -90.0f;
+    ecsManager.AddTransformComponent(churchEntity, churchTransform);
+  
+    ModelComponent churchModel;
+    church.LoadModel("../Models/scene.gltf");
+    churchModel.model = &church;
+    ecsManager.AddModelComponent(churchEntity, churchModel);
+
+    
+
+    //IM GUI INIT
+
+    mainCamera = Camera(glm::vec3(.0f,10.0f,10.0f), glm::vec3(.0f,1.0f,.0f), -90.0f, .0f, 3.0f,5.0f);
 
     noTexture.LoadTexture2D();
 
@@ -166,8 +228,11 @@ int main(){
 
     //IM GUI INIT    
     UI::Init(mainWindow.getGLFWwindow());
-
+    
     while(!mainWindow.getShouldClose()){
+
+        double frameStartTime = glfwGetTime();
+
         GLfloat now = glfwGetTime();
         deltaTime = now - lastTime;
         lastTime = now;
@@ -220,21 +285,35 @@ int main(){
         glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(mainCamera.calculateViewMatrix()));
         glUniform3f(uniformEyePos, mainCamera.getCameraPosition().x, mainCamera.getCameraPosition().y, mainCamera.getCameraPosition().z);
 
-        glm::mat4 model(1.0f);
+        //Draw Entities
+        std::vector<int> allEntities = ecsManager.GetEntities();
 
-        model = glm::translate(model, modelPositions[0]);
-        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-        plainTexture.UseTexture();
-        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-        meshList[0]->RenderMesh();
+        for (int entityID : allEntities) {
+            // Transform
+            if (ecsManager.HasComponent<TransformComponent>(entityID)) {
+                auto& transform = ecsManager.GetTransformComponent(entityID);
+                glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(transform.GetModelMatrix()));
+            }
 
-        model = glm::mat4(1.0f);
+            // Material + Texture
+            if (ecsManager.HasComponent<MaterialComponent>(entityID)) {
+                ecsManager.GetMaterialComponent(entityID).material->UseMaterial(uniformSpecularIntensity, uniformShininess);
+            }
+            if (ecsManager.HasComponent<TextureComponent>(entityID)) {
+                ecsManager.GetTextureComponent(entityID).texture->UseTexture();
+            }
 
-        model = glm::translate(model, modelPositions[1]);
-        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-        plainTexture.UseTexture();
-        roughMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-        meshList[1]->RenderMesh();
+            // Mesh OR Model
+            if (ecsManager.HasComponent<MeshComponent>(entityID)) {
+                ecsManager.GetMeshComponent(entityID).mesh->RenderMesh();
+            }
+            else if (ecsManager.HasComponent<ModelComponent>(entityID)) {
+                ecsManager.GetModelComponent(entityID).model->RenderModel();
+            }
+        }
+
+
+
 
         glDisable(GL_DEPTH_TEST);
 
@@ -245,20 +324,29 @@ int main(){
         //Place all the elements  here
         UI::FpsCounter(fps, 10, 10, 100, 50);
 
-        UI::PositionController(modelPositions, 0, 10, 70, 500, 100);
-        UI::PositionController(modelPositions, 1, 10, 90, 500, 100);
+        UI::InspectorPanel(ecsManager, floorEntity, 10, 70, 300, 300);
+        UI::InspectorPanel(ecsManager, pyramidEntity, 10, 390, 300, 300);
+        UI::InspectorPanel(ecsManager, churchEntity, 10, 710, 300, 300);
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
         glEnable(GL_DEPTH_TEST);
 
-        glfwSwapInterval(0); // Disable VSync set 1 to enable
         glUseProgram(0);
 
         mainWindow.SwapBuffers();
+
+        double frameEndTime = glfwGetTime();
+        double elapsedTime = frameEndTime - frameStartTime;
+
+        if (elapsedTime < TARGET_FRAME_TIME) {
+            double sleepTime = TARGET_FRAME_TIME - elapsedTime;
+            std::this_thread::sleep_for(std::chrono::microseconds(static_cast<int>(sleepTime * 1000000)));
+        }
     }
 
+    
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplGlfw_Shutdown();
     ImGui::DestroyContext();
