@@ -451,5 +451,8 @@ CMakeFiles/ENGIne.dir/src/main.cpp.o: \
  /home/gustaw/Desktop/ENGIne/headers/Material.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Model.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Utils.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/Renderer.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/Shader.hpp \
+ /home/gustaw/Desktop/ENGIne/headers/Window.hpp \
  /home/gustaw/Desktop/ENGIne/headers/Entity.hpp \
  /home/gustaw/Desktop/ENGIne/headers/EcsManager.hpp

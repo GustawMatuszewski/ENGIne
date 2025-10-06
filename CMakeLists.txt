@@ -41,6 +41,7 @@ add_executable(
     src/Model.cpp
     src/UI.cpp
     src/EcsManager.cpp
+    src/Renderer.cpp
     ${IMGUI_SRC}
 )
 

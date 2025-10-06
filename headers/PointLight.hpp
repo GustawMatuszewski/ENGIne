@@ -17,6 +17,17 @@ class PointLight:
                             GLuint linearLocation, GLuint exponentLocation);
 
             ~PointLight();
+
+            glm::vec3 GetPosition() const { return position; }
+            GLfloat GetConstant() const { return constant; }
+            GLfloat GetLinear() const { return linear; }
+            GLfloat GetExponent() const { return exponent; }
+
+            void SetPosition(glm::vec3 pos) { position = pos; }
+            void SetConstant(GLfloat con) { constant = con; }
+            void SetLinear(GLfloat lin) { linear = lin; }
+            void SetExponent(GLfloat exp) { exponent = exp; }
+
         protected:
             glm::vec3 position;
 

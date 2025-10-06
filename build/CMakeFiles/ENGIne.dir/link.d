@@ -16,8 +16,7 @@ ENGIne: \
   CMakeFiles/ENGIne.dir/src/Model.cpp.o \
   CMakeFiles/ENGIne.dir/src/UI.cpp.o \
   CMakeFiles/ENGIne.dir/src/EcsManager.cpp.o \
-  CMakeFiles/ENGIne.dir/src/Job.cpp.o \
-  CMakeFiles/ENGIne.dir/src/JobQ.cpp.o \
+  CMakeFiles/ENGIne.dir/src/Renderer.cpp.o \
   CMakeFiles/ENGIne.dir/third_party/imgui/imgui.cpp.o \
   CMakeFiles/ENGIne.dir/third_party/imgui/imgui_demo.cpp.o \
   CMakeFiles/ENGIne.dir/third_party/imgui/imgui_draw.cpp.o \
@@ -117,9 +116,7 @@ CMakeFiles/ENGIne.dir/src/UI.cpp.o:
 
 CMakeFiles/ENGIne.dir/src/EcsManager.cpp.o:
 
-CMakeFiles/ENGIne.dir/src/Job.cpp.o:
-
-CMakeFiles/ENGIne.dir/src/JobQ.cpp.o:
+CMakeFiles/ENGIne.dir/src/Renderer.cpp.o:
 
 CMakeFiles/ENGIne.dir/third_party/imgui/imgui.cpp.o:
 

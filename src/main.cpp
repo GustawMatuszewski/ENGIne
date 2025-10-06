@@ -29,16 +29,25 @@
 #include "Material.hpp"
 #include "Model.hpp"
 #include "UI.hpp"
+#include "Renderer.hpp"
 
 #include "Entity.hpp"
 #include "EcsManager.hpp"
-
-ECSManager ecsManager;
 
 Window mainWindow;
 Camera mainCamera;
 std::vector<Mesh*> meshList;
 std::vector<Shader> shaderList;
+
+DirectionalLight mainLight;
+PointLight pointLights[MAX_POINT_LIGHTS];
+SpotLight spotLights[MAX_SPOT_LIGHTS];
+
+ECSManager ecsManager;
+
+Renderer renderer;
+
+
 
 Texture noTexture;
 Texture plainTexture;
@@ -49,9 +58,6 @@ Material roughMaterial;
 Model church;
 Entity testEntity;
 
-DirectionalLight mainLight;
-PointLight pointLights[MAX_POINT_LIGHTS];
-SpotLight spotLights[MAX_SPOT_LIGHTS];
 
 GLfloat deltaTime = .0f;
 GLfloat lastTime = .0f;
@@ -145,7 +151,6 @@ int main(){
     ecsManager.AddMaterialComponent(floorEntity, floorMaterial);
     
 
-
     int pyramidEntity = ecsManager.CreateEntity();
 
     TransformComponent pyramidTransform;
@@ -164,9 +169,9 @@ int main(){
     pyramidMaterial.material = &shinyMaterial;
     ecsManager.AddMaterialComponent(pyramidEntity, pyramidMaterial);
 
-    // Create an entity for the church
-    
+
     int churchEntity = ecsManager.CreateEntity();
+
     TransformComponent churchTransform;
     churchTransform.position = glm::vec3(2.0f, 0.0f, 0.0f);
     churchTransform.rotation.x = -90.0f;
@@ -177,9 +182,65 @@ int main(){
     churchModel.model = &church;
     ecsManager.AddModelComponent(churchEntity, churchModel);
 
-    
 
-    //IM GUI INIT
+    int mainLightEntity = ecsManager.CreateEntity();
+
+    DirectionalLightComponent mainLightComp;
+    DirectionalLight mainLight(
+        1.0f, 1.0f, 1.0f, 0.1f, 0.3f,
+        .0f,
+        .0f,
+        -1.0f
+    );
+    mainLightComp.directionalLight = &mainLight;
+    ecsManager.AddDirectionalLightComponent(mainLightEntity, mainLightComp);
+
+
+    unsigned int pointLightCount = 0;
+    unsigned int spotLightCount = 0;
+
+    int pointLight1Entity = ecsManager.CreateEntity();
+
+    PointLightComponent pointLight1Comp;
+    pointLights[0] = PointLight(1.0f, .0f, .0f, .1f, 1.0f,
+                                -4.0f, 2.0f, 2.0f,
+                                .3f, .1f, .1f);
+    pointLight1Comp.pointLight = &pointLights[0];
+    ecsManager.AddPointLightComponent(pointLight1Entity, pointLight1Comp);
+    pointLightCount++;
+
+    int pointLight2Entity = ecsManager.CreateEntity();
+
+    PointLightComponent pointLight2Comp;
+    pointLights[1] = PointLight(.0f, 1.0f, .0f, .1f, 1.0f,
+                                .0f, 2.0f, -2.0f,
+                                .3f, .1f, .1f);
+    pointLight2Comp.pointLight = &pointLights[1];
+    ecsManager.AddPointLightComponent(pointLight2Entity, pointLight2Comp);
+    pointLightCount++;
+
+    int pointLight3Entity = ecsManager.CreateEntity();
+
+    PointLightComponent pointLight3Comp;
+    pointLights[2] = PointLight(.0f, .0f, 1.0f, .1f, 1.0f,
+                                4.0f, 2.0f, 2.0f,
+                                .3f, .1f, .1f);
+    pointLight3Comp.pointLight = &pointLights[2];
+    ecsManager.AddPointLightComponent(pointLight3Entity, pointLight3Comp);
+    pointLightCount++;
+
+    int spotLight1Entity = ecsManager.CreateEntity();
+
+    SpotLightComponent spotLight1Comp;
+    spotLights[0] = SpotLight(.0f, 1.0f, .0f, .1f, 1.0f,
+                                .0f, 2.0f, .0f,
+                                .0f, -1.0f, .0f,
+                                1.0f, .0f, .0f,
+                                20.0f);
+    spotLight1Comp.spotLight = &spotLights[0];
+    ecsManager.AddSpotLightComponent(spotLight1Entity, spotLight1Comp);
+    spotLightCount++;
+
 
     mainCamera = Camera(glm::vec3(.0f,10.0f,10.0f), glm::vec3(.0f,1.0f,.0f), -90.0f, .0f, 3.0f,5.0f);
 
@@ -191,42 +252,23 @@ int main(){
     shinyMaterial = Material(1.0f, 1080);
     roughMaterial = Material(.3f, 4);
 
-    mainLight = DirectionalLight(1.0f,1.0f,1.0f, .1f, .3f, 
-                                .0f, .0f, -1.0f);
-
-    unsigned int pointLightCount = 0;
-    pointLights[0] = PointLight(1.0f, .0f, .0f, .1f, 1.0f,
-                                -4.0f, 2.0f, 2.0f,
-                                .3f, .1f, .1f);
-    pointLightCount++;
-
-    pointLights[1] = PointLight(.0f, 1.0f, .0f, .1f, 1.0f,
-                                .0f, 2.0f, -2.0f,
-                                .3f, .1f, .1f);
-    pointLightCount++;
-
-    pointLights[2] = PointLight(.0f, .0f, 1.0f, .1f, 1.0f,
-                                4.0f, 2.0f, 2.0f,
-                                .3f, .1f, .1f);
-    pointLightCount++;
-
-
-    unsigned int spotLightCount = 0;
-    spotLights[0] = SpotLight(.0f, 1.0f, .0f, .1f, 1.0f,
-                                .0f, 2.0f, .0f,
-                                .0f, -1.0f, .0f,
-                                1.0f, .0f, .0f,
-                                20.0f);
-    spotLightCount++;
-
 
     GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePos = 0, uniformSpecularIntensity = 0, uniformShininess = 0;
 
-    glm::mat4 projection = glm::perspective(45.0f, mainWindow.getBufferWidth()/mainWindow.getBufferHeight(), .1f, 100.0f);
+    float aspect = (float)mainWindow.getBufferWidth() / (float)mainWindow.getBufferHeight();
+    glm::mat4 projection = glm::perspective(glm::radians(45.0f), aspect, 0.1f, 100.0f);
+
+    renderer = Renderer(&mainWindow, &mainCamera, &ecsManager,
+                        &shaderList,
+                        &mainLight,
+                        pointLights, &pointLightCount,
+                        spotLights, &spotLightCount,
+                        &projection);
+
+    renderer.Initialize();
 
     glEnable(GL_DEPTH_TEST);
-
-    //IM GUI INIT    
+ 
     UI::Init(mainWindow.getGLFWwindow());
     
     while(!mainWindow.getShouldClose()){
@@ -248,7 +290,7 @@ int main(){
 
         glfwPollEvents();
 
-        ImGuiIO& io = ImGui::GetIO();
+        ImGuiIO& io = ImGui::GetIO(); //THIS IS SHIT NEEDS TO BE FIXED!!!!
 
         if (!io.WantCaptureKeyboard) {
             mainCamera.keyControl(mainWindow.getsKeys(), deltaTime);
@@ -266,55 +308,9 @@ int main(){
         //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=
 
 
-        glClearColor(.0f, .0f ,.0f ,1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-        shaderList[0].UseShader();
-        uniformModel = shaderList[0].GetModelLocation();
-        uniformProjection = shaderList[0].GetProjectionLocation();
-        uniformView = shaderList[0].GetViewLocation();
-        uniformEyePos = shaderList[0].GetEyePosLocation();
-        uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
-        uniformShininess = shaderList[0].GetShininessLocation();
-
-        shaderList[0].SetDirectionalLight(&mainLight);
-        shaderList[0].SetPointLights(pointLights, pointLightCount);
-        shaderList[0].SetSpotLights(spotLights, spotLightCount);
-
-        glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(mainCamera.calculateViewMatrix()));
-        glUniform3f(uniformEyePos, mainCamera.getCameraPosition().x, mainCamera.getCameraPosition().y, mainCamera.getCameraPosition().z);
-
-        //Draw Entities
-        std::vector<int> allEntities = ecsManager.GetEntities();
-
-        for (int entityID : allEntities) {
-            // Transform
-            if (ecsManager.HasComponent<TransformComponent>(entityID)) {
-                auto& transform = ecsManager.GetTransformComponent(entityID);
-                glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(transform.GetModelMatrix()));
-            }
-
-            // Material + Texture
-            if (ecsManager.HasComponent<MaterialComponent>(entityID)) {
-                ecsManager.GetMaterialComponent(entityID).material->UseMaterial(uniformSpecularIntensity, uniformShininess);
-            }
-            if (ecsManager.HasComponent<TextureComponent>(entityID)) {
-                ecsManager.GetTextureComponent(entityID).texture->UseTexture();
-            }
-
-            // Mesh OR Model
-            if (ecsManager.HasComponent<MeshComponent>(entityID)) {
-                ecsManager.GetMeshComponent(entityID).mesh->RenderMesh();
-            }
-            else if (ecsManager.HasComponent<ModelComponent>(entityID)) {
-                ecsManager.GetModelComponent(entityID).model->RenderModel();
-            }
-        }
-
-
-
-
+        
+        renderer.Render();
+        
         glDisable(GL_DEPTH_TEST);
 
         ImGui_ImplOpenGL3_NewFrame();
@@ -324,9 +320,9 @@ int main(){
         //Place all the elements  here
         UI::FpsCounter(fps, 10, 10, 100, 50);
 
-        UI::InspectorPanel(ecsManager, floorEntity, 10, 70, 300, 300);
-        UI::InspectorPanel(ecsManager, pyramidEntity, 10, 390, 300, 300);
-        UI::InspectorPanel(ecsManager, churchEntity, 10, 710, 300, 300);
+        UI::InspectorPanel(ecsManager, pointLight1Entity, 10, 70, 300, 300);
+        UI::InspectorPanel(ecsManager, pointLight2Entity, 10, 390, 300, 300);
+        UI::InspectorPanel(ecsManager, spotLight1Entity, 10, 710, 300, 300);
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

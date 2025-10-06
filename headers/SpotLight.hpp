@@ -22,6 +22,15 @@ class SpotLight:
             void SetFlash(glm::vec3 pos, glm::vec3 dir);
 
             ~SpotLight();
+
+            glm::vec3 GetDirection() const { return direction; }
+            GLfloat GetEdge() const { return edge; }
+            GLfloat GetProcEdge() const { return procEdge; }
+
+            void SetDirection(glm::vec3 direction) { this->direction = direction; }
+            void SetEdge(GLfloat edge) { this->edge = edge; }
+            void SetProcEdge(GLfloat procEdge) { this->procEdge = procEdge; }
+
         private:
             glm::vec3 direction;
             

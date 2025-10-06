@@ -24,6 +24,9 @@ namespace UI {
     void FileExplorer(std::string& startPath);
     void TransformController(ECSManager& ecsManager, int entityID);
     void TextureController(ECSManager& ecsManager, int entityID);
+    void DirectionalLightController(ECSManager& ecsManager, int entityID);
+    void SpotLightController(ECSManager& ecsManager, int entityID);
+    void PointLightController(ECSManager& ecsManager, int entityID);
 
     void GetIo(ImGuiIO& io);
     void Destroy();

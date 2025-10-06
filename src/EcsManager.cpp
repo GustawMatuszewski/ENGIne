@@ -64,6 +64,21 @@ void ECSManager::AddScriptComponent(int entityID, const ScriptComponent& compone
         scriptComponents[entityID] = component;
 }
 
+void ECSManager::AddDirectionalLightComponent(int entityID, const DirectionalLightComponent& component) {
+    if (HasEntity(entityID))
+        directionalLightComponents[entityID] = component;
+}
+
+void ECSManager::AddSpotLightComponent(int entityID, const SpotLightComponent& component) {
+    if (HasEntity(entityID))
+        spotLightComponents[entityID] = component;
+}
+
+void ECSManager::AddPointLightComponent(int entityID, const PointLightComponent& component) {
+    if (HasEntity(entityID))
+        pointLightComponents[entityID] = component;
+}
+
 
 
 TransformComponent& ECSManager::GetTransformComponent(int entityID) {
@@ -98,3 +113,14 @@ ScriptComponent& ECSManager::GetScriptComponent(int entityID) {
     return scriptComponents.at(entityID);
 }
 
+DirectionalLightComponent& ECSManager::GetDirectionalLightComponent(int entityID) {
+    return directionalLightComponents.at(entityID);
+}
+
+SpotLightComponent& ECSManager::GetSpotLightComponent(int entityID) {
+    return spotLightComponents.at(entityID);
+}
+
+PointLightComponent& ECSManager::GetPointLightComponent(int entityID) {
+    return pointLightComponents.at(entityID);
+}

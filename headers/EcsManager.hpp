@@ -28,12 +28,16 @@ class ECSManager {
                 return textureComponents.count(entityID) > 0;
             } else if constexpr (std::is_same_v<T, MaterialComponent>) {
                 return materialComponents.count(entityID) > 0;
-            } else if constexpr (std::is_same_v<T, LightComponent>) {
-                return lightComponents.count(entityID) > 0;
             } else if constexpr (std::is_same_v<T, CameraComponent>) {
                 return cameraComponents.count(entityID) > 0;
             } else if constexpr (std::is_same_v<T, ScriptComponent>) {
                 return scriptComponents.count(entityID) > 0;
+            } else if constexpr (std::is_same_v<T, DirectionalLightComponent>) {
+                return directionalLightComponents.count(entityID) > 0;
+            } else if constexpr (std::is_same_v<T, SpotLightComponent>) {
+                return spotLightComponents.count(entityID) > 0;
+            } else if constexpr (std::is_same_v<T, PointLightComponent>) {
+                return pointLightComponents.count(entityID) > 0;
             }
             
             return false;
@@ -44,18 +48,25 @@ class ECSManager {
         void AddModelComponent(int entityID, const ModelComponent& component);
         void AddTextureComponent(int entityID, const TextureComponent& component);
         void AddMaterialComponent(int entityID, const MaterialComponent& component);
-        void AddLightComponent(int entityID, const LightComponent& component);
         void AddCameraComponent(int entityID, const CameraComponent& component);
         void AddScriptComponent(int entityID, const ScriptComponent& component);
+        void AddLightComponent(int entityID, const LightComponent& component);
+        void AddDirectionalLightComponent(int entityID, const DirectionalLightComponent& component);
+        void AddSpotLightComponent(int entityID, const SpotLightComponent& component);
+        void AddPointLightComponent(int entityID, const PointLightComponent& component);
 
         TransformComponent& GetTransformComponent(int entityID);
         MeshComponent& GetMeshComponent(int entityID);
         ModelComponent& GetModelComponent(int entityID);
         TextureComponent& GetTextureComponent(int entityID);
         MaterialComponent& GetMaterialComponent(int entityID);
-        LightComponent& GetLightComponent(int entityID);
         CameraComponent& GetCameraComponent(int entityID);
         ScriptComponent& GetScriptComponent(int entityID);
+        LightComponent& GetLightComponent(int entityID);
+        DirectionalLightComponent& GetDirectionalLightComponent(int entityID);
+        SpotLightComponent& GetSpotLightComponent(int entityID);
+        PointLightComponent& GetPointLightComponent(int entityID);
+        
 
     private:
         std::vector<int> entities;
@@ -69,5 +80,8 @@ class ECSManager {
         std::unordered_map<int, LightComponent> lightComponents;
         std::unordered_map<int, CameraComponent> cameraComponents;
         std::unordered_map<int, ScriptComponent> scriptComponents;
+        std::unordered_map<int, DirectionalLightComponent> directionalLightComponents;
+        std::unordered_map<int, SpotLightComponent> spotLightComponents;
+        std::unordered_map<int, PointLightComponent> pointLightComponents;
 };
 #endif

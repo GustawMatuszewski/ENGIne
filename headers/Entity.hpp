@@ -95,6 +95,21 @@ class CameraComponent {
         Camera* camera;
 };
 
+class DirectionalLightComponent{
+    public:
+        DirectionalLight* directionalLight;
+};
+
+class PointLightComponent{
+    public:
+        PointLight* pointLight;
+};
+
+class SpotLightComponent{
+    public:
+        SpotLight* spotLight;
+};
+
 class ScriptComponent {
     public:
         //asd
