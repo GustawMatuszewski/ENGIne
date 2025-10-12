@@ -50,13 +50,17 @@ Renderer renderer;
 
 
 Texture noTexture;
-Texture plainTexture;
+Texture plainTexture("../Textures/white.jpg");
+Texture testTexture("../Textures/1x1GridOrange.png");
 
 Material shinyMaterial;
 Material roughMaterial;
 
+Model plane; //Deafult Primitive Shapes
+Model cube;
+Model sphere;
+
 Model church;
-Entity testEntity;
 
 
 GLfloat deltaTime = .0f;
@@ -72,44 +76,6 @@ static const char* fShader = "../Shaders/default.frag";
 
 float mouseSens = .03f;
 
-void CreateObject(){
-    unsigned int indices[]={
-        0, 3, 1,
-        1, 3, 2,
-        2, 3, 0,
-        0, 1, 2
-    };
-
-    GLfloat vertices[] = {
-	//	x      y      z			u	  v         nx    ny   nz
-		-1.0f, -1.0f, -0.6f,	0.0f, 0.0f,     .0f, .0f, .0f,
-		0.0f, -1.0f, 1.0f,		0.5f, 0.0f,     .0f, .0f, .0f,
-		1.0f, -1.0f, -0.6f,		1.0f, 0.0f,     .0f, .0f, .0f,
-		0.0f, 1.0f, 0.0f,		0.5f, 1.0f,     .0f, .0f, .0f
-	};
-
-    unsigned int floorIndices[] = {
-        0, 2, 1,
-        1, 2, 3
-    };
-
-    GLfloat floorVertices[] = {
-        -10.0f, .0f, -10.0f,    .0f, .0f,       .0f, -1.0f, .0f,
-        10.0f, .0f, -10.0f,     10.0f, .0f,     .0f, -1.0f, .0f,
-        -10.0f, .0f, 10.0f,     .0f, 10.0f,     .0f, -1.0f, .0f,
-        10.0f, .0f, 10.0f,      10.0f, 10.0f,   .0f, -1.0f, .0f
-    };
-
-    Utils().calcAverageNormals(indices, 12, vertices, 32, 8, 5);
-
-    Mesh *TestObj = new Mesh();
-    TestObj->CreateMesh(vertices, indices, 32, 12);
-    meshList.push_back(TestObj);
-
-    Mesh *TestFloorObj = new Mesh();
-    TestFloorObj->CreateMesh(floorVertices, floorIndices, 32, 6);
-    meshList.push_back(TestFloorObj);
-}
 
 void CreateShaders(){
     Shader *shader1 = new Shader();
@@ -117,33 +83,58 @@ void CreateShaders(){
     shaderList.push_back(*shader1);
 }
 
+void effect(TransformComponent& transform) {
+    static float rotationAngle = 0.0f;
+
+    rotationAngle += 0.1f;
+
+    transform.rotation = glm::vec3(0.0f, rotationAngle, 0.0f);
+
+    float orbitRadius = 2.0f;
+    float orbitSpeed = 0.05f;
+    float orbitAngle = rotationAngle * orbitSpeed;
+
+    float x = orbitRadius * cos(orbitAngle);
+    float y = .0f;
+    float z = orbitRadius * sin(orbitAngle);
+
+    transform.position = glm::vec3(x, y, z);
+    transform.SetDirty();
+}
+
 int main(){
 
     mainWindow = Window(1920, 1080, "ENGIne 0.1.1");
     mainWindow.Initialize();
 
-    glfwSwapInterval(0); // Disable VSync set 1 to enable
+    glfwSwapInterval(1); // Disable VSync set 1 to enable
 
     const double TARGET_FPS = 144.0; //FPS LIMITER !!!!!!!!!!!!!!
     const double TARGET_FRAME_TIME = 1.0 / TARGET_FPS;
 
-    CreateObject();
     CreateShaders();
 
+    noTexture.LoadTexture2D();
+    plainTexture.LoadTexture2D();
+    testTexture.LoadTexture2D_A();
 
+    shinyMaterial = Material(1.0f, 1080);
+    roughMaterial = Material(.3f, 4);
 
     int floorEntity = ecsManager.CreateEntity();
 
     TransformComponent floorTransform;
     floorTransform.position = glm::vec3(0.0f, -2.0f, 0.0f);
+    floorTransform.scale = glm::vec3(1.0f, 1.0f, 1.0f);
     ecsManager.AddTransformComponent(floorEntity, floorTransform);
 
-    MeshComponent floorMesh;
-    floorMesh.mesh = meshList[1]; // Get the floor mesh
-    ecsManager.AddMeshComponent(floorEntity, floorMesh);
+    ModelComponent floorModel;
+    plane.LoadModel("../Models/Primitives/Plane.glb");
+    floorModel.model = &plane;
+    ecsManager.AddModelComponent(floorEntity, floorModel);
 
     TextureComponent floorTexture;
-    floorTexture.texture = &plainTexture;
+    floorTexture.texture = &testTexture;
     ecsManager.AddTextureComponent(floorEntity, floorTexture);
 
     MaterialComponent floorMaterial;
@@ -151,29 +142,31 @@ int main(){
     ecsManager.AddMaterialComponent(floorEntity, floorMaterial);
     
 
-    int pyramidEntity = ecsManager.CreateEntity();
+    int sphereEntity = ecsManager.CreateEntity();
 
-    TransformComponent pyramidTransform;
-    pyramidTransform.position = glm::vec3(0.0f, 2.0f, 0.0f);
-    ecsManager.AddTransformComponent(pyramidEntity, pyramidTransform);
+    TransformComponent sphereTransform;
+    sphereTransform.position = glm::vec3(0.0f, 2.0f, 0.0f);
+    ecsManager.AddTransformComponent(sphereEntity, sphereTransform);
 
-    MeshComponent pyramidMesh;
-    pyramidMesh.mesh = meshList[0]; // Get the pyramid mesh
-    ecsManager.AddMeshComponent(pyramidEntity, pyramidMesh);
+    TextureComponent sphereTexture;
+    sphereTexture.texture = &plainTexture;
+    ecsManager.AddTextureComponent(sphereEntity, sphereTexture);
 
-    TextureComponent pyramidTexture;
-    pyramidTexture.texture = &noTexture;
-    ecsManager.AddTextureComponent(pyramidEntity, pyramidTexture);
+    ModelComponent sphereModel;
+    sphere.LoadModel("../Models/Primitives/Sphere.glb");
+    sphereModel.model = &sphere;    
+    ecsManager.AddModelComponent(sphereEntity, sphereModel);
 
-    MaterialComponent pyramidMaterial;
-    pyramidMaterial.material = &shinyMaterial;
-    ecsManager.AddMaterialComponent(pyramidEntity, pyramidMaterial);
+    MaterialComponent sphereMaterial;
+    sphereMaterial.material = &roughMaterial;
+    ecsManager.AddMaterialComponent(sphereEntity, sphereMaterial);
+    
 
 
     int churchEntity = ecsManager.CreateEntity();
 
     TransformComponent churchTransform;
-    churchTransform.position = glm::vec3(2.0f, 0.0f, 0.0f);
+    churchTransform.position = glm::vec3(1.0f, -3.0f, -0.20f);
     churchTransform.rotation.x = -90.0f;
     ecsManager.AddTransformComponent(churchEntity, churchTransform);
   
@@ -187,10 +180,10 @@ int main(){
 
     DirectionalLightComponent mainLightComp;
     DirectionalLight mainLight(
-        1.0f, 1.0f, 1.0f, 0.1f, 0.3f,
+        1.0f, 1.0f, 1.0f, 0.1f, 0.1f,
         .0f,
-        .0f,
-        -1.0f
+        -1.0f,
+        .0f
     );
     mainLightComp.directionalLight = &mainLight;
     ecsManager.AddDirectionalLightComponent(mainLightEntity, mainLightComp);
@@ -232,7 +225,7 @@ int main(){
     int spotLight1Entity = ecsManager.CreateEntity();
 
     SpotLightComponent spotLight1Comp;
-    spotLights[0] = SpotLight(.0f, 1.0f, .0f, .1f, 1.0f,
+    spotLights[0] = SpotLight(.0f, .0f, .0f, .1f, 1.0f,
                                 .0f, 2.0f, .0f,
                                 .0f, -1.0f, .0f,
                                 1.0f, .0f, .0f,
@@ -243,15 +236,6 @@ int main(){
 
 
     mainCamera = Camera(glm::vec3(.0f,10.0f,10.0f), glm::vec3(.0f,1.0f,.0f), -90.0f, .0f, 3.0f,5.0f);
-
-    noTexture.LoadTexture2D();
-
-    plainTexture = Texture("../Textures/plain.png");
-    plainTexture.LoadTexture2D();
-
-    shinyMaterial = Material(1.0f, 1080);
-    roughMaterial = Material(.3f, 4);
-
 
     GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePos = 0, uniformSpecularIntensity = 0, uniformShininess = 0;
 
@@ -308,6 +292,7 @@ int main(){
         //-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-==-=
 
 
+        effect(ecsManager.GetTransformComponent(sphereEntity));
         
         renderer.Render();
         
@@ -320,9 +305,9 @@ int main(){
         //Place all the elements  here
         UI::FpsCounter(fps, 10, 10, 100, 50);
 
-        UI::InspectorPanel(ecsManager, pointLight1Entity, 10, 70, 300, 300);
-        UI::InspectorPanel(ecsManager, pointLight2Entity, 10, 390, 300, 300);
-        UI::InspectorPanel(ecsManager, spotLight1Entity, 10, 710, 300, 300);
+        UI::InspectorPanel(ecsManager, floorEntity, 10, 70, 300, 300);
+        UI::InspectorPanel(ecsManager, sphereEntity, 10, 390, 300, 300);
+        UI::InspectorPanel(ecsManager, churchEntity, 10, 710, 300, 300);
 
         ImGui::Render();
         ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());

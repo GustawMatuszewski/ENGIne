@@ -12,6 +12,8 @@
 #include "Model.hpp"
 #include "Utils.hpp"
 
+#include "EcsManager.hpp"
+
 #include <glm/glm.hpp>
 
 
@@ -112,7 +114,8 @@ class SpotLightComponent{
 
 class ScriptComponent {
     public:
-        //asd
+        
+
 };
 
 #endif

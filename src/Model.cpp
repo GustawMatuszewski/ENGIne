@@ -1,4 +1,6 @@
 #include "Model.hpp"
+#include "EcsManager.hpp"
+#include "Entity.hpp"
 
 Model::Model(){
 
@@ -80,7 +82,7 @@ void Model::LoadMaterials(const aiScene *scene){
                 int idx = std::string(path.data).rfind("/");
                 std::string filename = std::string(path.data).substr(idx + 1); //May lead to not finidng
 
-                std::string texPath = std::string("../Textures/") + filename;//Needs to be expanded
+                std::string texPath = std::string("../Textures/") + filename;//Needs to be expanded CHANGE HERE PASS THE TEX HIGHER
 
                 textureList[i] = new Texture(texPath.c_str());
 
@@ -93,10 +95,16 @@ void Model::LoadMaterials(const aiScene *scene){
                 }
             }
          }
+
          if(!textureList[i]){
             textureList[i] = new Texture("../Textures/missingTexture.png");
             textureList[i]->LoadTexture2D();
          }
+
+         //if((*ecsManager).HasComponent<TextureComponent>(entityID)){
+
+         //}
+         //tutaj chceckl an ecs
     }
 }
 

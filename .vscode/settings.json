@@ -71,6 +71,10 @@
         "text_encoding": "cpp",
         "__nullptr": "cpp",
         "filesystem": "cpp",
-        "future": "cpp"
+        "future": "cpp",
+        "cassert": "cpp",
+        "cerrno": "cpp",
+        "cfloat": "cpp",
+        "climits": "cpp"
     }
 }

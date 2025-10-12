@@ -1,5 +1,5 @@
 #include "Renderer.hpp"
-
+#include <string>
 Renderer::Renderer()
     : window(nullptr), camera(nullptr), ecsManager(nullptr),
       shaders(nullptr), mainLight(nullptr),
@@ -75,23 +75,35 @@ void Renderer::DrawEntities(){
 
     for (int entityID : allEntities) {
         if ((*ecsManager).HasComponent<TransformComponent>(entityID)) {
-            auto& transform = (*ecsManager).GetTransformComponent(entityID);
+            TransformComponent transform = (*ecsManager).GetTransformComponent(entityID);
             glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(transform.GetModelMatrix()));
         }
-
+        if ((*ecsManager).HasComponent<TextureComponent>(entityID)) {   
+            Texture* tex = (*ecsManager).GetTextureComponent(entityID).texture;
+            tex->UseTexture();
+        }
         if ((*ecsManager).HasComponent<MaterialComponent>(entityID)) {
             (*ecsManager).GetMaterialComponent(entityID).material->UseMaterial(uniformSpecularIntensity, uniformShininess);
         }
-        if ((*ecsManager).HasComponent<TextureComponent>(entityID)) {
-            (*ecsManager).GetTextureComponent(entityID).texture->UseTexture();
+        
+        if ((*ecsManager).HasComponent<ModelComponent>(entityID)) {
+            Model* model = (*ecsManager).GetModelComponent(entityID).model;
+
+            if ((*ecsManager).HasComponent<TextureComponent>(entityID)) {
+                Texture* tex = (*ecsManager).GetTextureComponent(entityID).texture;
+                tex->UseTexture();
+
+                for (auto mesh : model->GetMeshList())
+                    mesh->RenderMesh();
+            } else {
+                model->RenderModel();
+            }
         }
 
-        if ((*ecsManager).HasComponent<MeshComponent>(entityID)) {
+        else if ((*ecsManager).HasComponent<MeshComponent>(entityID)) {
             (*ecsManager).GetMeshComponent(entityID).mesh->RenderMesh();
         }
-        else if ((*ecsManager).HasComponent<ModelComponent>(entityID)) {
-            (*ecsManager).GetModelComponent(entityID).model->RenderModel();
-        }
+
     }
 }
 

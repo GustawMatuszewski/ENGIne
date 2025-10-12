@@ -22,6 +22,8 @@ class Model{
 
         std::vector<GLuint> textureIDs;
 
+        std::vector<Mesh*> GetMeshList() {return meshList;}
+
         ~Model();
 
     private:
