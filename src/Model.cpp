@@ -92,7 +92,7 @@ void Model::LoadMaterials(const aiScene *scene){
             }
          }
          if(!textureList[i]){
-            textureList[i] = new Texture("../noTexture.png");
+            textureList[i] = new Texture("../Textures/missingTexture.png");
             textureList[i]->LoadTexture2D();
          }
     }

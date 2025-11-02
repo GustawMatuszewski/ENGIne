@@ -24,6 +24,9 @@ add_executable(
     src/PointLight.cpp
     src/SpotLight.cpp
     src/Model.cpp
+        headers/Entity.h
+        headers/EntityManager.h
+        src/EntityManager.cpp
 )
 
 target_include_directories(ENGIne PRIVATE
