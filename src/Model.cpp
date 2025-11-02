@@ -1,8 +1,10 @@
 #include "Model.hpp"
 
-Model::Model(){
+Texture* missingTexture = new Texture("../Textures/missingTexture.png");
 
+Model::Model() {
 }
+
 
 void Model::RenderModel(){
     for(size_t i = 0; i < meshList.size(); i++){
@@ -15,6 +17,33 @@ void Model::RenderModel(){
         meshList[i]->RenderMesh();
     }
 }
+
+void Model::RenderModel(const std::vector<Texture*>& overrideTextures) {
+
+    for(size_t i = 0; i < meshList.size(); i++) {
+
+        Texture* texToUse = nullptr;
+
+
+        if(i < overrideTextures.size() && overrideTextures[i] != nullptr) {
+            texToUse = overrideTextures[i];
+        }
+        else {
+            unsigned int matIndex = meshToTex[i];
+            if(matIndex < textureList.size()) {
+                texToUse = textureList[matIndex];
+            }
+        }
+
+        if(!texToUse) {
+            texToUse = missingTexture;
+        }
+
+        texToUse->UseTexture();
+        meshList[i]->RenderMesh();
+    }
+}
+
 
 void Model::LoadModel(const std::string &fileName){
     Assimp::Importer importer;
@@ -71,7 +100,7 @@ void Model::LoadMaterials(const aiScene *scene){
 
     for(size_t i = 0; i < scene->mNumMaterials; i++){
         aiMaterial *material = scene->mMaterials[i];
-        
+
         textureList[i] = nullptr;
 
          if(material->GetTextureCount(aiTextureType_DIFFUSE)){
@@ -92,8 +121,8 @@ void Model::LoadMaterials(const aiScene *scene){
             }
          }
          if(!textureList[i]){
-            textureList[i] = new Texture("../Textures/missingTexture.png");
-            textureList[i]->LoadTexture2D();
+             textureList[i] = missingTexture;
+             missingTexture->LoadTexture2D();
          }
     }
 }
@@ -115,5 +144,5 @@ void Model::ClearModel(){
 }
 
 Model::~Model(){
-    
+
 }

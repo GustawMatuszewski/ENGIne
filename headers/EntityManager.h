@@ -23,8 +23,8 @@ class EntityManager {
 };
 
 class Component {
-public:
-    virtual ~Component() = default;
+    public:
+        virtual ~Component() = default;
 };
 
 class TransformComponent : public Component {
@@ -34,11 +34,18 @@ class TransformComponent : public Component {
         glm::vec3 scale;
 };
 
+class TextureComponent : public Component {
+    public:
+        Texture* texture;
+        std::vector<Texture*> textures;//So it works with children
+        std::string filename;
+
+};
+
 class ModelComponent : public Component {
     public:
         Model* model = new Model();
         std::string modelPath;
-
 };
 
 #endif //ENGINE_ENTITYMANAGER_H

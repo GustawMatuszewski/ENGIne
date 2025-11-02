@@ -81,28 +81,29 @@ int main(){
     shinyMaterial = Material(1.0f, 1080);
     roughMaterial = Material(.3f, 4);
 
-    mainLight = DirectionalLight(1.0f,1.0f,1.0f, .1f, .3f, 
-                                .0f, .0f, -1.0f);
+    mainLight = DirectionalLight(1.0f,1.0f,1.0f, .1f, .3f,
+                                .0f, -1.0f, -.4f);
 
     unsigned int pointLightCount = 0;
-    pointLights[0] = PointLight(1.0f, .0f, .0f, .1f, 1.0f,
+    unsigned int spotLightCount = 0;
+    /*
+    pointLights[0] = PointLight(1.0f, 1.0f, 1.0f, .1f, 1.0f,
                                 -4.0f, 2.0f, 2.0f,
                                 .3f, .1f, .1f);
     pointLightCount++;
 
-    pointLights[1] = PointLight(.0f, 1.0f, .0f, .1f, 1.0f,
+    pointLights[1] = PointLight(1.0f, 1.0f, 1.0f, .1f, 1.0f,
                                 .0f, 2.0f, -2.0f,
                                 .3f, .1f, .1f);
     pointLightCount++;
 
-    pointLights[2] = PointLight(.0f, .0f, 1.0f, .1f, 1.0f,
+    pointLights[2] = PointLight(1.0f, 1.0f, 1.0f, .1f, 1.0f,
                                 4.0f, 2.0f, 2.0f,
                                 .3f, .1f, .1f);
     pointLightCount++;
 
 
-    unsigned int spotLightCount = 0;
-    spotLights[0] = SpotLight(.0f, 1.0f, .0f, .1f, 1.0f,
+    spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f, .1f, 1.0f,
                                 .0f, 2.0f, .0f,
                                 .0f, -1.0f, .0f,
                                 1.0f, .0f, .0f,
@@ -110,6 +111,7 @@ int main(){
     spotLightCount++;
 
 
+    */
     GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePos = 0, uniformSpecularIntensity = 0, uniformShininess = 0;
 
     glm::mat4 projection = glm::perspective(45.0f, mainWindow.getBufferWidth()/mainWindow.getBufferHeight(), .1f, 100.0f);
@@ -120,13 +122,15 @@ int main(){
     Entity* entity = new Entity();
     entityManager.AddComponent(entity, new TransformComponent());
     entityManager.AddComponent(entity, new ModelComponent());
+    entityManager.AddComponent(entity, new TextureComponent());
 
     TransformComponent* transform = entityManager.GetComponent<TransformComponent>(entity);
     ModelComponent* modelE = entityManager.GetComponent<ModelComponent>(entity);
+    TextureComponent* textureE = entityManager.GetComponent<TextureComponent>(entity);
 
     transform->position = glm::vec3(0.0f);
+    textureE->texture = &plainTexture;
     modelE->modelPath = "../Models/Primitives/Sphere.glb";
-
     modelE->model->LoadModel(modelE->modelPath);
 
 #include <typeinfo>
@@ -134,6 +138,7 @@ int main(){
     for (auto* c : entity->components) {
         printf("Component type: %s\n", typeid(*c).name());
     }
+
 
     while(!mainWindow.getShouldClose()){
         GLfloat now = glfwGetTime();
@@ -164,19 +169,23 @@ int main(){
         glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(mainCamera.calculateViewMatrix()));
         glUniform3f(uniformEyePos, mainCamera.getCameraPosition().x, mainCamera.getCameraPosition().y, mainCamera.getCameraPosition().z);
 
-        // /transform->position.x += .001;
+        transform->position.x += .001;
 
         glm::mat4 model(1.0f);
         model = glm::translate(model, transform->position);
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-        plainTexture.UseTexture();
+
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
-        modelE->model->RenderModel();
+
+        textureE->textures=std::vector<Texture*>(modelE->model->GetMeshCount(), nullptr);
+        textureE->textures[0] = &plainTexture;
+        modelE->model->RenderModel(textureE->textures);
+
+
 
         glUseProgram(0);
 
         mainWindow.SwapBuffers();
     }
-
     return 0;
 }

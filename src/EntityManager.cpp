@@ -13,6 +13,7 @@ void EntityManager::AddComponent(Entity* entity, Component* component) {
 
     bool hasTransform = false;
     bool hasModel = false;
+    bool hasTexture = false;
 
     if (dynamic_cast<ModelComponent*>(component)) {
         for (auto* c : entity->components) {

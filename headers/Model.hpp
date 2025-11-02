@@ -17,7 +17,10 @@ class Model{
 
         void LoadModel(const std::string &fileName);
         void RenderModel();
+        void RenderModel(const std::vector<Texture*>& overrideTextures);
         void ClearModel();
+
+        size_t GetMeshCount() const { return meshList.size(); }
 
         ~Model();
 
