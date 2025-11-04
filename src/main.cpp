@@ -44,7 +44,7 @@ Material roughMaterial;
 
 Model test;
 
-DirectionalLight mainLight;
+//DirectionalLight mainLight;
 PointLight pointLights[MAX_POINT_LIGHTS];
 SpotLight spotLights[MAX_SPOT_LIGHTS];
 
@@ -71,18 +71,18 @@ int main(){
 
     CreateShaders();
 
-    mainCamera = Camera(glm::vec3(.0f,.0f,.0f), glm::vec3(.0f,1.0f,.0f), -90.0f, .0f, 3.0f,5.0f);
+    mainCamera = Camera(glm::vec3(.0f,3.0f,.0f), glm::vec3(.0f,1.0f,.0f), .0f, -90.0f, 3.0f,5.0f);
 
     noTexture.LoadTexture2D();
 
-    plainTexture = Texture("../Textures/plain.png");
-    plainTexture.LoadTexture2D();
+    plainTexture = Texture("../Textures/KJ.png");
+    plainTexture.LoadTexture2D_A();
 
     shinyMaterial = Material(1.0f, 1080);
     roughMaterial = Material(.3f, 4);
 
-    mainLight = DirectionalLight(1.0f,1.0f,1.0f, .1f, .3f,
-                                .0f, -1.0f, -.4f);
+    //mainLight = DirectionalLight(1.0f,1.0f,1.0f, .1f, .3f,
+     //                           .0f, -1.0f, -.4f);
 
     unsigned int pointLightCount = 0;
     unsigned int spotLightCount = 0;
@@ -123,19 +123,61 @@ int main(){
     entityManager.AddComponent(entity, new TransformComponent());
     entityManager.AddComponent(entity, new ModelComponent());
     entityManager.AddComponent(entity, new TextureComponent());
+    entityManager.AddComponent(entity, new DirectionalLightComponent());
 
     TransformComponent* transform = entityManager.GetComponent<TransformComponent>(entity);
     ModelComponent* modelE = entityManager.GetComponent<ModelComponent>(entity);
     TextureComponent* textureE = entityManager.GetComponent<TextureComponent>(entity);
+    DirectionalLightComponent* dLight = entityManager.GetComponent<DirectionalLightComponent>(entity);
 
     transform->position = glm::vec3(0.0f);
+    transform->rotation.y = 90.0f;
+    transform->scale = glm::vec3(1.0f);
+
     textureE->texture = &plainTexture;
+
     modelE->modelPath = "../Models/Primitives/Sphere.glb";
     modelE->model->LoadModel(modelE->modelPath);
 
+    dLight->color=glm::vec3(1.0f, 1.0f, 1.0f);
+    dLight->ambientIntensity = .1f;
+    dLight->diffuseIntensity = .3f;
+    dLight->direction=glm::vec3(.0f,.0f,1.0f);
+    dLight->UpdateDirectionalLight();
+
+    Entity* planeE = new Entity();
+    entityManager.AddComponent(planeE, new ModelComponent());
+
+    ModelComponent* plane = entityManager.GetComponent<ModelComponent>(planeE);
+    TransformComponent* planeTransform = entityManager.GetComponent<TransformComponent>(planeE);
+    TextureComponent* planeTexture = entityManager.GetComponent<TextureComponent>(planeE);
+
+    plane->modelPath = "../Models/Primitives/Plane.glb";
+    plane->model->LoadModel(plane->modelPath);
+
+    planeTexture->texture = &plainTexture;
+
+    planeTransform->position = glm::vec3(0.0f);
+    planeTransform->rotation.y = -90.0f;
+    planeTransform->scale = glm::vec3(10.0f);
+
+    Entity* pointLightEntity = new Entity();
+    entityManager.AddComponent(pointLightEntity,new PointLightComponent());
+    PointLightComponent* pLight = entityManager.GetComponent<PointLightComponent>(pointLightEntity);
+
+    pLight->position =  glm::vec3(.0f, 2.0f, .0f);
+    pLight->color =  glm::vec3(1.0f, 1.0f, 1.0f);
+    pLight->ambientIntensity = .1f;
+    pLight->diffuseIntensity = .1f;
+
+
+    pLight->Update();
+    pointLights[pointLightCount] = *pLight->GetPointLight();
+    pointLightCount++;
+
 #include <typeinfo>
 
-    for (auto* c : entity->components) {
+    for (auto* c : pointLightEntity->components) {
         printf("Component type: %s\n", typeid(*c).name());
     }
 
@@ -161,7 +203,7 @@ int main(){
         uniformSpecularIntensity = shaderList[0].GetSpecularIntensityLocation();
         uniformShininess = shaderList[0].GetShininessLocation();
 
-        shaderList[0].SetDirectionalLight(&mainLight);
+        shaderList[0].SetDirectionalLight(dLight->GetDirectionalLight());
         shaderList[0].SetPointLights(pointLights, pointLightCount);
         shaderList[0].SetSpotLights(spotLights, spotLightCount);
 
@@ -169,10 +211,50 @@ int main(){
         glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(mainCamera.calculateViewMatrix()));
         glUniform3f(uniformEyePos, mainCamera.getCameraPosition().x, mainCamera.getCameraPosition().y, mainCamera.getCameraPosition().z);
 
-        transform->position.x += .001;
+        //transform->position.x += .001;
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Update rotation
+        transform->rotation.x += 20.0f * deltaTime; // rotate 20 degrees per second on X
+        transform->rotation.y += 30.0f * deltaTime; // rotate 30 degrees per second on Y
+        transform->rotation.z += 15.0f * deltaTime; // rotate 15 degrees per second on Z
+
+        // Keep angles between 0-360 for cleanliness
+        if(transform->rotation.x > 360.0f) transform->rotation.x -= 360.0f;
+        if(transform->rotation.y > 360.0f) transform->rotation.y -= 360.0f;
+        if(transform->rotation.z > 360.0f) transform->rotation.z -= 360.0f;
+
+        // === Animate Point Light ===
+
+        // Move the light over time
+        pLight->position.x += 1.2f * deltaTime;
+        pLight->position.y += 0.8f * deltaTime;
+        pLight->position.z += 1.5f * deltaTime;
+
+        // Wrap the movement inside [-3, 3]
+        if (pLight->position.x > 3.0f) pLight->position.x = -3.0f;
+        if (pLight->position.x < -3.0f) pLight->position.x = 3.0f;
+
+        if (pLight->position.y > 3.0f) pLight->position.y = -3.0f;
+        if (pLight->position.y < -3.0f) pLight->position.y = 3.0f;
+
+        if (pLight->position.z > 3.0f) pLight->position.z = -3.0f;
+        if (pLight->position.z < -3.0f) pLight->position.z = 3.0f;
+
+        // Update ECS component and sync to renderer array
+        pLight->Update();
+        pointLights[0] = *pLight->GetPointLight();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         glm::mat4 model(1.0f);
         model = glm::translate(model, transform->position);
+
+        model = glm::rotate(model, glm::radians(transform->rotation.x), glm::vec3(1,0,0));
+        model = glm::rotate(model, glm::radians(transform->rotation.y), glm::vec3(0,1,0));
+        model = glm::rotate(model, glm::radians(transform->rotation.z), glm::vec3(0,0,1));
+
+        model = glm::scale(model, transform->scale);
+
         glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 
         shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
@@ -180,6 +262,24 @@ int main(){
         textureE->textures=std::vector<Texture*>(modelE->model->GetMeshCount(), nullptr);
         textureE->textures[0] = &plainTexture;
         modelE->model->RenderModel(textureE->textures);
+
+        //plane
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, planeTransform->position);
+
+        model = glm::rotate(model, glm::radians(planeTransform->rotation.x), glm::vec3(1,0,0));
+        model = glm::rotate(model, glm::radians(planeTransform->rotation.y), glm::vec3(0,1,0));
+        model = glm::rotate(model, glm::radians(planeTransform->rotation.z), glm::vec3(0,0,1));
+
+        model = glm::scale(model, planeTransform->scale);
+
+        glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+
+        shinyMaterial.UseMaterial(uniformSpecularIntensity, uniformShininess);
+
+        planeTexture->textures=std::vector<Texture*>(modelE->model->GetMeshCount(), nullptr);
+        planeTexture->textures[0] = &plainTexture;
+        plane->model->RenderModel(planeTexture->textures);
 
 
 
