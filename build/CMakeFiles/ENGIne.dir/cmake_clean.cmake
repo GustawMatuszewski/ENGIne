@@ -4,6 +4,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/ENGIne.dir/src/Camera.cpp.o.d"
   "CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.o"
   "CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.o.d"
+  "CMakeFiles/ENGIne.dir/src/EntityManager.cpp.o"
+  "CMakeFiles/ENGIne.dir/src/EntityManager.cpp.o.d"
   "CMakeFiles/ENGIne.dir/src/Light.cpp.o"
   "CMakeFiles/ENGIne.dir/src/Light.cpp.o.d"
   "CMakeFiles/ENGIne.dir/src/Material.cpp.o"

@@ -8,18 +8,19 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/gustaw/Desktop/ENGIne/src/Camera.cpp" "CMakeFiles/ENGIne.dir/src/Camera.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Camera.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/DirectionalLight.cpp" "CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/Light.cpp" "CMakeFiles/ENGIne.dir/src/Light.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Light.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/Material.cpp" "CMakeFiles/ENGIne.dir/src/Material.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Material.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/Mesh.cpp" "CMakeFiles/ENGIne.dir/src/Mesh.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Mesh.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/Model.cpp" "CMakeFiles/ENGIne.dir/src/Model.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Model.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/PointLight.cpp" "CMakeFiles/ENGIne.dir/src/PointLight.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/PointLight.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/Shader.cpp" "CMakeFiles/ENGIne.dir/src/Shader.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Shader.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/SpotLight.cpp" "CMakeFiles/ENGIne.dir/src/SpotLight.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/SpotLight.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/Texture.cpp" "CMakeFiles/ENGIne.dir/src/Texture.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Texture.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/Window.cpp" "CMakeFiles/ENGIne.dir/src/Window.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Window.cpp.o.d"
-  "/home/gustaw/Desktop/ENGIne/src/main.cpp" "CMakeFiles/ENGIne.dir/src/main.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/main.cpp.o.d"
+  "/home/gustaw/ENGIne/src/Camera.cpp" "CMakeFiles/ENGIne.dir/src/Camera.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Camera.cpp.o.d"
+  "/home/gustaw/ENGIne/src/DirectionalLight.cpp" "CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/DirectionalLight.cpp.o.d"
+  "/home/gustaw/ENGIne/src/EntityManager.cpp" "CMakeFiles/ENGIne.dir/src/EntityManager.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/EntityManager.cpp.o.d"
+  "/home/gustaw/ENGIne/src/Light.cpp" "CMakeFiles/ENGIne.dir/src/Light.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Light.cpp.o.d"
+  "/home/gustaw/ENGIne/src/Material.cpp" "CMakeFiles/ENGIne.dir/src/Material.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Material.cpp.o.d"
+  "/home/gustaw/ENGIne/src/Mesh.cpp" "CMakeFiles/ENGIne.dir/src/Mesh.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Mesh.cpp.o.d"
+  "/home/gustaw/ENGIne/src/Model.cpp" "CMakeFiles/ENGIne.dir/src/Model.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Model.cpp.o.d"
+  "/home/gustaw/ENGIne/src/PointLight.cpp" "CMakeFiles/ENGIne.dir/src/PointLight.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/PointLight.cpp.o.d"
+  "/home/gustaw/ENGIne/src/Shader.cpp" "CMakeFiles/ENGIne.dir/src/Shader.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Shader.cpp.o.d"
+  "/home/gustaw/ENGIne/src/SpotLight.cpp" "CMakeFiles/ENGIne.dir/src/SpotLight.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/SpotLight.cpp.o.d"
+  "/home/gustaw/ENGIne/src/Texture.cpp" "CMakeFiles/ENGIne.dir/src/Texture.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Texture.cpp.o.d"
+  "/home/gustaw/ENGIne/src/Window.cpp" "CMakeFiles/ENGIne.dir/src/Window.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/Window.cpp.o.d"
+  "/home/gustaw/ENGIne/src/main.cpp" "CMakeFiles/ENGIne.dir/src/main.cpp.o" "gcc" "CMakeFiles/ENGIne.dir/src/main.cpp.o.d"
   "" "ENGIne" "gcc" "CMakeFiles/ENGIne.dir/link.d"
   )
 

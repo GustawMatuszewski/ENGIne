@@ -1,4 +1,3 @@
-#define STB_IMAGE_IMPLEMENTATION
 
 #include <iostream>
 #include <string.h>
@@ -19,6 +18,7 @@
 #include "Shader.hpp"
 #include "Window.hpp"
 #include "Camera.hpp"
+#include "DefaultScene.h" //<-------
 #include "Texture.hpp"
 #include "DirectionalLight.hpp"
 #include "EntityManager.h"
@@ -31,15 +31,15 @@
 
 const float toRadians = 3.141592265f/180.0f;
 
-Window mainWindow;
-Camera mainCamera;
-std::vector<Mesh*> meshList;
+DefaultScene scene;
+Window *mainWindow;
+Camera *mainCamera ;
 std::vector<Shader> shaderList;
 
 Texture noTexture;
 Texture plainTexture;
 
-Material shinyMaterial;
+//Material shinyMaterial;
 Material roughMaterial;
 
 Model test;
@@ -58,27 +58,23 @@ static const char* fShader = "../Shaders/default.frag";
 EntityManager entityManager;
 
 
-void CreateShaders(){
-    Shader *shader1 = new Shader();
-    shader1->CreateFromFiles(vShader, fShader);
-    shaderList.push_back(*shader1);
-}
+// void CreateShaders(){
+//     auto shader1 = new Shader();
+//     shader1->CreateFromFiles(vShader, fShader);
+//     shaderList.push_back(*shader1);
+// }
 
 int main(){
-
-    mainWindow = Window(1366, 768, "ENGine 0.1");
-    mainWindow.Initialize();
-
-    CreateShaders();
-
-    mainCamera = Camera(glm::vec3(.0f,3.0f,.0f), glm::vec3(.0f,1.0f,.0f), .0f, -90.0f, 3.0f,5.0f);
-
+    mainWindow = &scene.mainWindow;
+    mainCamera = &scene.mainCamera;
+    // CreateShaders();
+    shaderList.push_back(scene.assetManager.shaders["nyger"]);
     noTexture.LoadTexture2D();
 
     plainTexture = Texture("../Textures/KJ.png");
     plainTexture.LoadTexture2D_A();
 
-    shinyMaterial = Material(1.0f, 1080);
+    auto shinyMaterial = scene.assetManager.CreateMaterial("shinyMaterial",1.0f, 1080);
     roughMaterial = Material(.3f, 4);
 
     //mainLight = DirectionalLight(1.0f,1.0f,1.0f, .1f, .3f,
@@ -114,21 +110,21 @@ int main(){
     */
     GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePos = 0, uniformSpecularIntensity = 0, uniformShininess = 0;
 
-    glm::mat4 projection = glm::perspective(45.0f, mainWindow.getBufferWidth()/mainWindow.getBufferHeight(), .1f, 100.0f);
+    glm::mat4 projection = glm::perspective(45.0f, mainWindow->getBufferWidth()/mainWindow->getBufferHeight(), .1f, 100.0f);
 
     glEnable(GL_DEPTH_TEST);
 
     //TEST ENTITY
-    Entity* entity = new Entity();
+    auto entity = new Entity();
     entityManager.AddComponent(entity, new TransformComponent());
     entityManager.AddComponent(entity, new ModelComponent());
     entityManager.AddComponent(entity, new TextureComponent());
     entityManager.AddComponent(entity, new DirectionalLightComponent());
 
-    TransformComponent* transform = entityManager.GetComponent<TransformComponent>(entity);
-    ModelComponent* modelE = entityManager.GetComponent<ModelComponent>(entity);
-    TextureComponent* textureE = entityManager.GetComponent<TextureComponent>(entity);
-    DirectionalLightComponent* dLight = entityManager.GetComponent<DirectionalLightComponent>(entity);
+    auto transform = entityManager.GetComponent<TransformComponent>(entity);
+    auto modelE = entityManager.GetComponent<ModelComponent>(entity);
+    auto textureE = entityManager.GetComponent<TextureComponent>(entity);
+    auto dLight = entityManager.GetComponent<DirectionalLightComponent>(entity);
 
     transform->position = glm::vec3(0.0f);
     transform->rotation.y = 90.0f;
@@ -145,12 +141,12 @@ int main(){
     dLight->direction=glm::vec3(.0f,.0f,1.0f);
     dLight->UpdateDirectionalLight();
 
-    Entity* planeE = new Entity();
+    auto planeE = new Entity();
     entityManager.AddComponent(planeE, new ModelComponent());
 
-    ModelComponent* plane = entityManager.GetComponent<ModelComponent>(planeE);
-    TransformComponent* planeTransform = entityManager.GetComponent<TransformComponent>(planeE);
-    TextureComponent* planeTexture = entityManager.GetComponent<TextureComponent>(planeE);
+    auto plane = entityManager.GetComponent<ModelComponent>(planeE);
+    auto planeTransform = entityManager.GetComponent<TransformComponent>(planeE);
+    auto planeTexture = entityManager.GetComponent<TextureComponent>(planeE);
 
     plane->modelPath = "../Models/Primitives/Plane.glb";
     plane->model->LoadModel(plane->modelPath);
@@ -161,9 +157,10 @@ int main(){
     planeTransform->rotation.y = -90.0f;
     planeTransform->scale = glm::vec3(10.0f);
 
-    Entity* pointLightEntity = new Entity();
+    auto pointLightEntity = new Entity();
     entityManager.AddComponent(pointLightEntity,new PointLightComponent());
-    PointLightComponent* pLight = entityManager.GetComponent<PointLightComponent>(pointLightEntity);
+
+    auto pLight = entityManager.GetComponent<PointLightComponent>(pointLightEntity);
 
     pLight->position =  glm::vec3(.0f, 2.0f, .0f);
     pLight->color =  glm::vec3(1.0f, 1.0f, 1.0f);
@@ -182,17 +179,17 @@ int main(){
     }
 
 
-    while(!mainWindow.getShouldClose()){
+    while(!mainWindow->getShouldClose()){
         GLfloat now = glfwGetTime();
         deltaTime = now - lastTime;
         lastTime = now;
 
         glfwPollEvents();
 
-        mainCamera.keyControl(mainWindow.getsKeys(), deltaTime);
-        mainCamera.mouseControl(mainWindow.getXChange(), mainWindow.getYChange(), deltaTime);
+        mainCamera->keyControl(mainWindow->getsKeys(), deltaTime);
+        mainCamera->mouseControl(mainWindow->getXChange(), mainWindow->getYChange(), deltaTime);
 
-        glClearColor(.0f, .0f ,.0f ,1.0f);
+        glClearColor(.1f, .1f ,.1f ,.7f);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shaderList[0].UseShader();
@@ -208,8 +205,8 @@ int main(){
         shaderList[0].SetSpotLights(spotLights, spotLightCount);
 
         glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projection));
-        glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(mainCamera.calculateViewMatrix()));
-        glUniform3f(uniformEyePos, mainCamera.getCameraPosition().x, mainCamera.getCameraPosition().y, mainCamera.getCameraPosition().z);
+        glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(mainCamera->calculateViewMatrix()));
+        glUniform3f(uniformEyePos, mainCamera->getCameraPosition().x, mainCamera->getCameraPosition().y, mainCamera->getCameraPosition().z);
 
         //transform->position.x += .001;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -285,7 +282,7 @@ int main(){
 
         glUseProgram(0);
 
-        mainWindow.SwapBuffers();
+        mainWindow->SwapBuffers();
     }
     return 0;
 }

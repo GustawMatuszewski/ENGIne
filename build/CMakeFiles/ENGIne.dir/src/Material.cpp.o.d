@@ -1,27 +1,21 @@
 CMakeFiles/ENGIne.dir/src/Material.cpp.o: \
- /home/gustaw/Desktop/ENGIne/src/Material.cpp /usr/include/stdc-predef.h \
- /home/gustaw/Desktop/ENGIne/headers/Material.hpp /usr/include/GL/glew.h \
- /usr/include/c++/15/cstddef \
- /usr/include/x86_64-linux-gnu/c++/15/bits/c++config.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/os_defines.h \
+ /home/gustaw/ENGIne/src/Material.cpp /usr/include/stdc-predef.h \
+ /home/gustaw/ENGIne/headers/Material.hpp /usr/include/GL/glew.h \
+ /usr/include/c++/15.2.1/cstddef \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/c++config.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/os_defines.h \
  /usr/include/features.h /usr/include/features-time64.h \
- /usr/include/x86_64-linux-gnu/bits/wordsize.h \
- /usr/include/x86_64-linux-gnu/bits/timesize.h \
- /usr/include/x86_64-linux-gnu/sys/cdefs.h \
- /usr/include/x86_64-linux-gnu/bits/long-double.h \
- /usr/include/x86_64-linux-gnu/gnu/stubs.h \
- /usr/include/x86_64-linux-gnu/gnu/stubs-64.h \
- /usr/include/x86_64-linux-gnu/c++/15/bits/cpu_defines.h \
- /usr/include/c++/15/pstl/pstl_config.h \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stddef.h \
- /usr/include/c++/15/bits/version.h /usr/include/c++/15/cstdint \
- /usr/lib/gcc/x86_64-linux-gnu/15/include/stdint.h /usr/include/stdint.h \
- /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
- /usr/include/x86_64-linux-gnu/bits/types.h \
- /usr/include/x86_64-linux-gnu/bits/typesizes.h \
- /usr/include/x86_64-linux-gnu/bits/time64.h \
- /usr/include/x86_64-linux-gnu/bits/wchar.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /usr/include/x86_64-linux-gnu/bits/stdint-least.h /usr/include/GL/glu.h \
+ /usr/include/bits/wordsize.h /usr/include/bits/timesize.h \
+ /usr/include/sys/cdefs.h /usr/include/bits/long-double.h \
+ /usr/include/gnu/stubs.h /usr/include/gnu/stubs-64.h \
+ /usr/include/c++/15.2.1/x86_64-pc-linux-gnu/bits/cpu_defines.h \
+ /usr/include/c++/15.2.1/pstl/pstl_config.h \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stddef.h \
+ /usr/include/c++/15.2.1/bits/version.h /usr/include/c++/15.2.1/cstdint \
+ /usr/lib/gcc/x86_64-pc-linux-gnu/15.2.1/include/stdint.h \
+ /usr/include/stdint.h /usr/include/bits/libc-header-start.h \
+ /usr/include/bits/types.h /usr/include/bits/typesizes.h \
+ /usr/include/bits/time64.h /usr/include/bits/wchar.h \
+ /usr/include/bits/stdint-intn.h /usr/include/bits/stdint-uintn.h \
+ /usr/include/bits/stdint-least.h /usr/include/GL/glu.h \
  /usr/include/GL/gl.h
